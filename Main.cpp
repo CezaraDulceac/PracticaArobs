@@ -1,0 +1,22 @@
+#include "Vector.hpp"
+#include <iostream>
+
+int main() 
+{ 
+  Vector vec(10);
+  vec.pushBack(0);
+  vec.pushBack(1);
+  vec.pushBack(2);
+  vec.pushBack(3);
+  vec.pushBack(4);
+  vec.pushFront(5);
+
+  vec.print();
+  std::cout<< vec.getFront() << " " << vec.getBack() << " " << vec.getElement(1) <<" " << std::endl;
+
+  std::cout << vec.getCapacity() << std::endl;
+  vec.reserve(15);
+  std::cout << vec.getCapacity() << std::endl;
+
+
+}

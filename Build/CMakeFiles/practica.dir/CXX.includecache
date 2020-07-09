@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cdulceac/problems/Main.cpp
+Vector.hpp
+/home/cdulceac/problems/Vector.hpp
+iostream
+-
+
+/home/cdulceac/problems/Vector.hpp
+cstddef
+-
+cstdlib
+-
+
