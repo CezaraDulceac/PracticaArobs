@@ -79,10 +79,7 @@ T Vector<T>::getFront()
 }
 
 template <typename T>
-T Vector<T>::getBack()
-{
-    return this->m_data[this->m_size-1];
-}
+T Vector<T>::
 
 template <typename T>
 void Vector<T>::setElement(size_t idx, T element)
