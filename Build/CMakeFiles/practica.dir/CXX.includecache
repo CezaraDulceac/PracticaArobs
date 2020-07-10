@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cdulceac/problems/List.hpp
+cstddef
+-
+ListNode.hpp
+/home/cdulceac/problems/ListNode.hpp
+
+/home/cdulceac/problems/ListNode.hpp
+cstddef
+-
+
+/home/cdulceac/problems/Main.cpp
+List.hpp
+/home/cdulceac/problems/List.hpp
+iostream
+-
+

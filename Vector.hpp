@@ -1,28 +1,32 @@
+#ifndef VECTOR_HPP
+#define VECTOR_HPP
+
 #include <cstddef>
 #include <cstdlib>
+
+template <typename T>
 class Vector{
 public:
 
-    Vector(std::size_t elem);
+    Vector();
+    Vector(const Vector& rhs);
     ~Vector();
 
     size_t getSize();
     size_t getCapacity();
 
-    //void setSize(size_t idx);
-    //void setCapacity(size_t idx);
-
-    void insert(size_t idx, int element);
-    void pushFront(int element);
-    void pushBack(int element);
-
-    int getElement(size_t idx);
-    int getFront();
-    int getBack();
+    void insert(size_t idx, T element);
+    void pushFront(T element);
+    void pushBack(T element);
+    void erase(size_t idx);
     
-    void setElement(size_t idx, int element);
-    void setFront(int element);
-    void setBack(int element);
+    T getElement(size_t idx);
+    T getFront();
+    T getBack();
+    
+    void setElement(size_t idx, T element);
+    void setFront(T element);
+    void setBack(T element);
 
     void clear();
     bool empty();
@@ -32,8 +36,9 @@ public:
 private:
     size_t m_capacity;
     size_t m_size;
-    int* m_data;
-
-    
+    T* m_data;
 
 };
+
+#include "Vector.tpp"
+#endif 
