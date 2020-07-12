@@ -1,6 +1,15 @@
 #include "Vector.hpp" 
 #include <iostream>
 #include <string.h>
+constexpr std::size_t INITIAL_CAPACITY = 10;
+
+template <typename T>
+Vector<T>::Vector()
+{
+    m_capacity = INITIAL_CAPACITY; //sa nu se apeleze de mai multe ori reserve
+    m_size = 0;
+    m_data = new T[INITIAL_CAPACITY];
+}
 
 template <typename T>
 Vector<T>::Vector(const Vector& rhs) 
@@ -10,7 +19,6 @@ Vector<T>::Vector(const Vector& rhs)
     m_data = new T[m_capacity]; 
     memcpy(m_data, rhs.m_data, m_capacity * sizeof(T));
 
-    std::cout << "miau\n";
 } 
 
 template <typename T>
@@ -34,6 +42,11 @@ size_t Vector<T>::getCapacity()
 template <typename T>
 void Vector<T>::insert(size_t idx, T element)
 {
+    if(this->m_capacity <= this->m_size) //daca mai avem loc in vector
+    {
+        reserve((1+m_capacity) * 2);
+    }
+
     if(idx >= 0 && idx <= this->m_size){
         for(size_t i = idx; i < this->m_size - 1; ++i){
             this->m_data[i+1] = this->m_data[i];
@@ -46,24 +59,57 @@ void Vector<T>::insert(size_t idx, T element)
 template <typename T>
 void Vector<T>::pushFront(T element)
 {
-    if(this->m_capacity > this->m_size) //daca mai avem loc in vector
+    if(this->m_capacity <= this->m_size) //daca mai avem loc in vector
     {
-
-        for(size_t i = m_size; i > 0; --i){
-            this->m_data[i] = this->m_data[i-1];
-        }
-        this->m_data[0] = element;
-        this->m_size++;
+        reserve((1+m_capacity) * 2);
     }
+    
+    for(size_t i = m_size; i > 0; --i){
+        this->m_data[i] = this->m_data[i-1];
+    }
+    this->m_data[0] = element;
+    this->m_size++;
 }
 
 template <typename T>
 void Vector<T>::pushBack(T element)
 {
-    if(this->m_capacity > this->m_size) //daca mai avem loc in vector
+    if(this->m_capacity <= this->m_size) //daca mai avem loc in vector
     {
-        this->m_data[m_size++] = element;
+        reserve((1+m_capacity) * 2);
     }
+
+    this->m_data[m_size++] = element;
+}
+
+template <typename T>
+void Vector<T>::erase(size_t idx)
+{
+    if(idx >= 0 && idx <= m_size){
+        for(size_t i = idx; i < m_size - 1; ++i){
+            m_data[i] = m_data[i + 1];
+        }
+    } m_size--;
+}
+
+template <typename T>
+void Vector<T>::popFront()
+{
+    //T front = m_data[0];   
+    for(size_t i = 0; i < m_size - 1; ++i)
+    {
+        m_data[i] = m_data[i + 1];
+    }
+    m_size--;
+    //return front;
+}
+
+template <typename T>
+void Vector<T>::popBack()
+{
+    //T back = m_data[m_size]; //maybe some memory dealocation?
+    m_size --;
+    //return back;
 }
 
 template <typename T>
@@ -79,12 +125,16 @@ T Vector<T>::getFront()
 }
 
 template <typename T>
-T Vector<T>::
+T Vector<T>::getBack()
+{
+    return this->m_data[this->m_size-1];
+}
 
 template <typename T>
 void Vector<T>::setElement(size_t idx, T element)
 {
     if(idx < this->m_size)
+ 
         this->m_data[idx] = element;
 }
 
@@ -103,7 +153,6 @@ void Vector<T>::setBack(T element)
 template <typename T>
 void Vector<T>::clear()
 {
-
     for(size_t i = 0; i < this->m_size; ++i){
         this->m_data[i] = 0;
     }
@@ -112,16 +161,7 @@ void Vector<T>::clear()
 template <typename T>
 bool Vector<T>::empty()
 {
-    bool ok = 1;
-    while(ok)
-    {
-        for(size_t i = 0; i < this->m_size; ++i){
-            if(m_data[i] == NULL){
-                ok = 0;
-            }
-        }
-        return true;
-    }
+    if(m_size == 0) return true;
     return false;
 }
 
@@ -145,6 +185,6 @@ void Vector<T>::reserve(size_t newCapacity)
 template <typename T>
 void Vector<T>::print(){
     for(size_t i = 0; i < this->m_size; ++i)
-        std::cout << m_data[i] << " \n";
+        std::cout << m_data[i] << " ";
 }
 

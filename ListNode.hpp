@@ -1,9 +1,14 @@
+#ifndef LISTNODE_HPP
+#define LISTNODE_HPP
+
 #include <cstddef>
 
+template <typename T>
 class ListNode{
 public:
 
-   ListNode(ListNode* prev, ListNode * next, int data);
+   ListNode(ListNode* prev, ListNode * next, T data);
+   ListNode(const ListNode& rhs);
    ~ListNode();
 
    ListNode* getPrev();
@@ -12,14 +17,19 @@ public:
    void setPrev(ListNode* prev);
    void setNext(ListNode* next);
 
-   int getData();
+   T getData();
    void setData(ListNode* data);
-   void setDataInt(int data);
+   void setDataT(T data);
+
+   void print();
 
     
 private:
 
     ListNode* m_prev;
     ListNode* m_next;
-    int m_data;
+    T m_data;
 };
+
+#include "ListNode.tpp"
+#endif  //LISTNODE_HPP
