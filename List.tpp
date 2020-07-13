@@ -41,6 +41,63 @@ List<T>::~List()
 }
 
 template <typename T>
+const T& List<T>::operator[](std::size_t idx) const
+{
+   ListNode<T>* p = m_head;
+   while(idx)
+    {
+        p = p->getNext();
+        --idx;
+    }
+
+    return p->getData();
+}
+
+template <typename T>
+T& List<T>::operator[](std::size_t idx)
+{
+   ListNode<T>* p = m_head;
+   while(idx)
+    {
+        p = p->getNext();
+        --idx;
+    }
+
+    return p->getData(); //facut sa returneze referinta
+}
+
+template <typename T>
+List<T>& List<T>::operator=(const List& rhs)
+{
+    m_size = 0;
+    m_head = NULL;
+    m_tail = NULL;
+
+   ListNode<T>*p = rhs.m_head;
+   while(p != NULL)
+   {
+       pushBack(p->getData());
+       ++m_size;
+       p = p->getNext();
+   }
+
+     return *this;
+}
+
+template<typename U>
+std::ostream& operator<<(std::ostream& os, const List<U>& ln)
+{
+   ListNode<U>*p = ln.m_head;
+   while(p != NULL)
+   {
+       os<< std::to_string(p->getData()) << " ";
+       p = p->getNext();
+   }
+    os << "\n";
+    return os;
+}
+
+template <typename T>
 void List<T>::insert(size_t idx, T element)
 {
     if(idx < 0 || idx > m_size) return;

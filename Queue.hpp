@@ -11,6 +11,11 @@ public:
     Queue(const Queue& rhs);
     ~Queue();
 
+    Queue<T,TContainer>& operator=(const Queue& rhs);
+
+    template <typename U, template <typename> typename UTContainer>
+    friend std::ostream& operator<<(std::ostream& os, const Queue<U,UTContainer>& vec);
+
     size_t getSize();
 
     void push(T element);

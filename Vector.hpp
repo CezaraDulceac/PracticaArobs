@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <cstdlib>
 #include <iostream>
+#include <ostream>
 #include <string.h>
 
 template <typename T>
@@ -16,6 +17,13 @@ public:
 
     size_t getSize();
     size_t getCapacity();
+
+    const T& operator[](std::size_t idx) const;
+    T& operator[](std::size_t idx);
+    Vector<T>& operator=(const Vector& rhs);
+
+    template<typename U>
+    friend std::ostream& operator<<(std::ostream& os, const Vector<U>& vec);
 
     void insert(size_t idx, T element);
     void pushFront(T element);

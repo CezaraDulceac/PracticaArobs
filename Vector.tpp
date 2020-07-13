@@ -28,6 +28,45 @@ Vector<T>::~Vector()
 }
 
 template <typename T>
+const T& Vector<T>::operator[](std::size_t idx) const
+{
+    return m_data[idx];
+}
+
+template <typename T>
+T& Vector<T>::operator[](std::size_t idx)
+{
+    return m_data[idx];
+}
+
+template <typename T>
+Vector<T>& Vector<T>::operator=(const Vector& rhs)
+{
+    if(m_capacity != rhs.m_capacity)
+    {
+        delete[] m_data;
+        m_data = new T[rhs.m_capacity];
+    }
+    m_capacity = rhs.m_capacity;
+    memcpy(m_data, rhs.m_data, m_capacity * sizeof(T));
+
+    return *this;
+}
+
+template<typename U>
+std::ostream& operator<<(std::ostream& os, const Vector<U>& vec)
+{
+   for(std::size_t idx = 0; idx < vec.m_capacity; ++idx)
+   {
+       os << vec.m_data[idx] << " ";
+   }
+   os << std::endl;
+
+   return os;
+}
+
+
+template <typename T>
 size_t Vector<T>::getSize()
 {
     return this->m_size;

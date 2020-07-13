@@ -11,13 +11,18 @@ public:
    ListNode(const ListNode& rhs);
    ~ListNode();
 
+   ListNode<T>& operator=(const ListNode& rhs);
+
+    template<typename U>
+    friend std::ostream& operator<<(std::ostream& os, const ListNode<U>& vec);
+
    ListNode* getPrev();
    ListNode* getNext();
 
    void setPrev(ListNode* prev);
    void setNext(ListNode* next);
 
-   T getData();
+   T& getData();
    void setData(ListNode* data);
    void setDataT(T data);
 

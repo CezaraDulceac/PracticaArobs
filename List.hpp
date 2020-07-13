@@ -12,6 +12,14 @@ public:
     List(const List& rhs);
     ~List();
 
+    const T& operator[](std::size_t idx) const;
+    T& operator[](std::size_t idx);
+    
+    List<T>& operator=(const List<T>& rhs);
+
+    template<typename U>
+    friend std::ostream& operator<<(std::ostream& os, const List<U>& vec);
+
     void insert(size_t idx, T element);
     void pushFront(T element);
     void pushBack(T element);

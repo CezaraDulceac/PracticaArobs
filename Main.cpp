@@ -8,7 +8,19 @@
 int main() 
 { 
   Vector<int> vec;
- 
+  vec.pushBack(1);
+  vec.pushBack(2);
+  vec.pushBack(3);
+  std::cout << vec[0] << std::endl; 
+  std::cout << vec[1] << std::endl; 
+  vec[0] = 10;
+  std::cout << vec[0] << std::endl; 
+  std::cout << vec[1] << std::endl; 
+
+  Vector<int> vec1;
+  vec1 = vec;
+   
+   std::cout << vec1;
   // vec.pushBack(0);
   // vec.pushBack(1);
   // vec.pushBack(2);
@@ -36,30 +48,41 @@ int main()
 
 
   ListNode<int> l(NULL, NULL, 2);
-  ListNode<int> lp(NULL, NULL, 1);
-  ListNode<int> ln(NULL, NULL, 3);
-  ListNode<int> l1(NULL, NULL, 4);
+  l.getData() = 1;
+  std::cout << l << "Miau\n";
+  // ListNode<int> lp(NULL, NULL, 1);
 
-  std::cout << "Data from l: " << l.getData() << "\n";
+  // std::cout << l;
+  // l = lp;
+  // std::cout << l;
+  // ListNode<int> ln(NULL, NULL, 3);
+  // ListNode<int> l1(NULL, NULL, 4);
 
-  l.setNext(&ln);
-  l.setPrev(&lp);
+  // std::cout << "Data from l: " << l.getData() << "\n";
 
-  l1.setData(&l);
-  l.print();
-  l1.print();
+  // l.setNext(&ln);
+  // l.setPrev(&lp);
+
+  // l1.setData(&l);
+  // l.print();
+  // l1.print();
 
   List<int> list;
-  list.pushBack(2);
-  list.pushBack(3);
-  list.pushFront(1);
-  list.print();
+  list.pushBack(18);
+  list.pushBack(19);
+  list.pushFront(17);
+  std::cout <<list;
 
-  List<int> list1(list);
-  list1.print();
-  list.pushBack(4);
-  list.pushBack(5);
-  list.print();
+  List<int> list1;
+  list1 = list;
+  list1[0] = 10;
+  std::cout <<list1 << " si " << list1[0] << "\n";
+ 
+  // List<int> list1(list);
+  // list1.print();
+  // list.pushBack(4);
+  // list.pushBack(5);
+  // list.print();
   // std::cout<< list.getElement(2) << " " 
   //          << list.getFront() << " "
   //          << list.getBack() << " " 
@@ -84,7 +107,9 @@ int main()
   q.push(7);
   q.print();
   q.pop();
-  q.print();
+  std::cout << q;
+
+
 
 
 
