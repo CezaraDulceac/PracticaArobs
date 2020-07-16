@@ -193,7 +193,7 @@ void Vector<T>::resize(std::size_t newSize)
     {
         for(std::size_t idx = m_size; idx < newSize; ++idx)
         {
-            m_data[idx] = default;
+            m_data[idx] = T();
         }
 
     }else
@@ -206,7 +206,7 @@ void Vector<T>::resize(std::size_t newSize)
 template <typename T>
 VectorIterator<T> Vector<T>::begin()
 {
-    return VectorIterator<T>(m_data);
+    return Iterator(m_data);
 }
 
 template <typename T>

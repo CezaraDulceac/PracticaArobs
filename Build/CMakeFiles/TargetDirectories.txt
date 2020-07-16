@@ -1,0 +1,4 @@
+/home/cdulceac/problems/Build/CMakeFiles/rebuild_cache.dir
+/home/cdulceac/problems/Build/CMakeFiles/practica.dir
+/home/cdulceac/problems/Build/CMakeFiles/edit_cache.dir
+/home/cdulceac/problems/Build/CMakeFiles/run_tests.dir

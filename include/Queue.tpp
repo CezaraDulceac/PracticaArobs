@@ -71,14 +71,14 @@ void Queue<T,TContainer>::print()
 }
 
 template <typename T, template <typename> typename TContainer>
-TIterator Queue<T,TContainer>::begin()
+typename TContainer<T>::TIterator Queue<T,TContainer>::begin()
 {
-    return TIterator<T>(m_container.begin());
+    return typename TContainer<T>::TIterator(m_container.begin());
 }
 
 template <typename T, template <typename> typename TContainer>
-TIterator Queue<T,TContainer>::end()
+typename TContainer<T>::TIterator Queue<T,TContainer>::end()
 {
-    return TIterator<T>(m_container.end());
+    return typename TContainer<T>::TIterator(m_container.end());
 }
 

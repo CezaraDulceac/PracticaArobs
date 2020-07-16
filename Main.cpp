@@ -2,6 +2,7 @@
 #include "List.hpp"
 #include "ListNode.hpp"
 #include "Queue.hpp"
+#include "PriorityQueue.hpp"
 
 #include <iostream>
 

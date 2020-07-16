@@ -5,8 +5,10 @@
 #include <ostream>
 #include "VectorIterator.hpp"
 
+
 template <typename T>
 class Vector{
+    using Iterator = VectorIterator<T>;
 public:
 
     Vector();
