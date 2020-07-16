@@ -41,14 +41,14 @@ size_t Queue<T,TContainer>::getSize()
 template <typename T, template <typename> typename TContainer>
 void Queue<T,TContainer>::push(T element)
 {
-    m_container.pushBack(element);
+    m_container.pushFront(element);
 }
 
 template <typename T, template <typename> typename TContainer>
 T Queue<T,TContainer>::pop()
 {
-    T val = m_container.getFront();
-    m_container.popFront();
+    T val = m_container.getBack();
+    m_container.popBack();
     return val;
 }
 
@@ -68,5 +68,17 @@ template <typename T, template <typename> typename TContainer>
 void Queue<T,TContainer>::print()
 {
     m_container.print();
+}
+
+template <typename T, template <typename> typename TContainer>
+TIterator Queue<T,TContainer>::begin()
+{
+    return TIterator<T>(m_container.begin());
+}
+
+template <typename T, template <typename> typename TContainer>
+TIterator Queue<T,TContainer>::end()
+{
+    return TIterator<T>(m_container.end());
 }
 

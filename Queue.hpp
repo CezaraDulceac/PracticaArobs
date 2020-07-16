@@ -1,8 +1,9 @@
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
-
 #include <cstddef>
+using TIterator = typename TContainer::TIterator;
+
 template <typename T, template <typename> typename TContainer>
 class Queue
 {
@@ -12,10 +13,7 @@ public:
     ~Queue();
 
     Queue<T,TContainer>& operator=(const Queue& rhs);
-
-    template <typename U, template <typename> typename UTContainer>
-    friend std::ostream& operator<<(std::ostream& os, const Queue<U,UTContainer>& vec);
-
+    
     size_t getSize();
 
     void push(T element);
@@ -23,11 +21,18 @@ public:
 
     void clear();
     bool empty();
-    void print();
+
+    template <typename U, template <typename> typename UTContainer>
+    friend std::ostream& operator<<(std::ostream& os, const Queue<U,UTContainer>& vec);
+
+    TIterator begin();
+    TIterator end();
+
 
 private:
 
     TContainer<T> m_container;
+    void print();
 };
 
 

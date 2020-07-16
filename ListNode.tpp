@@ -4,10 +4,21 @@
 template <typename T>
  ListNode<T>::ListNode(ListNode* prev, ListNode* next, T data)
  {
-     m_data = data;
-     m_next = next;
-     m_prev = prev;
- }
+    m_data = data;
+
+    m_next = next;
+    if(m_next != NULL)
+    {
+        next->m_prev = *this;
+    }
+
+    m_prev = prev;
+    if(m_prev != NULL)
+    {
+        prev->m_next = *this;
+    } 
+}
+     
 
 template <typename T>
 ListNode<T>::ListNode(const ListNode& rhs)
@@ -55,17 +66,13 @@ std::ostream& operator<<(std::ostream& os, const ListNode<U>& ln)
 template <typename T>
 ListNode<T>* ListNode<T>::getPrev()
 {
-    if(m_prev != NULL)
-        return m_prev;
-    return NULL;
+    return m_prev;
 }
 
 template <typename T>
 ListNode<T>* ListNode<T>::getNext()
 {
-    if(m_next != NULL)
-        return m_next;
-    return NULL;
+    return m_next;
 }
 
 template <typename T>

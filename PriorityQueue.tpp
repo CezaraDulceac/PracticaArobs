@@ -39,17 +39,28 @@ size_t PriorityQueue<T,TContainer>::getSize()
 }
 
 template <typename T, template <typename> typename TContainer>
-void PriorityQueue<T,TContainer>::push(T element)
+void PriorityQueue<T,TContainer>::push(T task)
 {
-    m_container.pushBack(element);
+    //m_container.pushFront(element);
+
+    std::size_t pos = 0;
+
+    for (std::size_t idx = 0; idx < m_container.getSize(); ++idx)
+    {
+        if (m_container.getElement() < task)
+        {
+            pos++;
+        }
+    }
+    m_container.insert(pos, task);
 }
 
 template <typename T, template <typename> typename TContainer>
 T PriorityQueue<T,TContainer>::pop()
 {
-    T val = m_container.getFront();
-    m_container.popFront();
-    return val;
+    T task = m_container.getBack();
+    m_container.popBack();
+    return task;
 }
 
 template <typename T, template <typename> typename TContainer>
@@ -68,5 +79,17 @@ template <typename T, template <typename> typename TContainer>
 void PriorityQueue<T,TContainer>::print()
 {
     m_container.print();
+}
+
+template <typename T, template <typename> typename TContainer>
+TIterator PriorityQueue<T,TContainer>::begin()
+{
+    return TIterator<T>(m_container.begin());
+}
+
+template <typename T, template <typename> typename TContainer>
+TIterator PriorityQueue<T,TContainer>::end()
+{
+    return TIterator<T>(m_container.end());
 }
 

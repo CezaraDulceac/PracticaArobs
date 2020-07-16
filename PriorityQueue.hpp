@@ -1,8 +1,9 @@
 #ifndef PRIORITYQUEUE_HPP
 #define PRIORITYQUEUE_HPP
 
-
 #include <cstddef>
+using TIterator = typename TContainer::TIterator;
+
 template <typename T, template <typename> typename TContainer>
 class PriorityQueue
 {
@@ -13,9 +14,6 @@ public:
 
     PriorityQueue<T,TContainer>& operator=(const PriorityQueue& rhs);
 
-    template <typename U, template <typename> typename UTContainer>
-    friend std::ostream& operator<<(std::ostream& os, const PriorityQueue<U,UTContainer>& pq);
-
     size_t getSize();
 
     void push(T element);
@@ -23,11 +21,17 @@ public:
 
     void clear();
     bool empty();
-    void print();
+
+    template <typename U, template <typename> typename UTContainer>
+    friend std::ostream& operator<<(std::ostream& os, const PriorityQueue<U,UTContainer>& pq);
+
+    TIterator begin();
+    TIterator end();
 
 private:
 
     TContainer<T> m_container;
+    void print();
 };
 
 

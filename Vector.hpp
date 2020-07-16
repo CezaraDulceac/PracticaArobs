@@ -2,54 +2,54 @@
 #define VECTOR_HPP
 
 #include <cstddef>
-#include <cstdlib>
-#include <iostream>
 #include <ostream>
-#include <string.h>
+#include "VectorIterator.hpp"
 
 template <typename T>
 class Vector{
 public:
 
-     Vector();
+    Vector();
     Vector(const Vector& rhs);
     ~Vector();
 
-    size_t getSize();
-    size_t getCapacity();
-
-    const T& operator[](std::size_t idx) const;
-    T& operator[](std::size_t idx);
     Vector<T>& operator=(const Vector& rhs);
 
-    template<typename U>
-    friend std::ostream& operator<<(std::ostream& os, const Vector<U>& vec);
+    std::size_t getSize();
+    std::size_t getCapacity();
 
-    void insert(size_t idx, T element);
+    void insert(std::size_t idx, T element);
     void pushFront(T element);
     void pushBack(T element);
     
-    void erase(size_t idx);
+    void erase(std::size_t idx);
     void popFront();
     void popBack();
 
-    T getElement(size_t idx);
     T getFront();
     T getBack();
 
-    void setElement(size_t idx, T element);
+    const T& operator[](std::size_t idx) const;
+    T& operator[](std::size_t idx);
+
     void setFront(T element);
     void setBack(T element);
 
     void clear();
     bool empty();
-    void print();
-    void reserve(size_t newCapacity);
 
+    template<typename U>
+    friend std::ostream& operator<<(std::ostream& os, const Vector<U>& vec);
+
+    void reserve(std::size_t newCapacity);
+    void resize(std::size_t newSize);
+
+    VectorIterator<T> begin();
+    VectorIterator<T> end();
 
 private:
-    size_t m_capacity;
-    size_t m_size;
+    std::size_t m_capacity;
+    std::size_t m_size;
     T* m_data;
 
 };

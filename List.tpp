@@ -90,7 +90,7 @@ std::ostream& operator<<(std::ostream& os, const List<U>& ln)
    ListNode<U>*p = ln.m_head;
    while(p != NULL)
    {
-       os<< std::to_string(p->getData()) << " ";
+       os << p->getData() << " ";
        p = p->getNext();
    }
     os << "\n";
@@ -108,10 +108,12 @@ void List<T>::insert(size_t idx, T element)
     if(idx == 0) 
     {
         pushFront(element);
+        return;
     }
     if(idx == m_size)
     {
         pushBack(element);
+        return;
     }
     while(idx)
     {
@@ -148,15 +150,14 @@ template <typename T>
 void List<T>::pushBack(T element)
 {
    ListNode<T>* node = new ListNode<T>(NULL,NULL,element);
-   ListNode<T>* p = m_tail;
    if(m_head == NULL)
    {
        m_head = m_tail = node;
        return;
    }
 
-    p->setNext(node);
-    node->setPrev(p);
+    m_tail->setNext(node);
+    node->setPrev(m_tail);
     m_tail = node;
 
     ++m_size;
@@ -198,18 +199,7 @@ T List<T>::getBack()
 template <typename T>
 size_t List<T>::getSize()
 {
-    if(m_head == NULL) return 0;
-    if(m_head == m_tail) return 1;
-
-    size_t size = 0;
-    ListNode<T>* p = m_head;
-    while(p != NULL)
-    {
-        p = p->getNext();
-        ++size;
-    }
-
-    return size;
+    return m_size;
 }
 
 template <typename T>
@@ -221,10 +211,12 @@ void List<T>::erase(size_t idx)
     if(idx == 0) 
     {
         popFront();
+        return;
     }
     if(idx == m_size)
     {
         popBack();
+        return;
     }
     while(idx)
     {
@@ -245,11 +237,6 @@ void List<T>::popFront()
     m_head = m_head->getNext();
     delete p;
     --m_size;
-
-    if(m_size == 0)
-    {
-        m_head = m_tail = NULL;
-    }
 }
 
 template <typename T>
@@ -261,11 +248,6 @@ void List<T>::popBack()
         m_tail = m_tail->getPrev();
         delete p;
         --m_size;
-
-        if(m_size == 0)
-        {
-            m_head = m_tail = NULL;
-        }
     }
     
 }
@@ -279,10 +261,12 @@ void List<T>::setElement(size_t idx, T element)
     if(idx == 0) 
     {
        setFront(element);
+       return;
     }
     if(idx == m_size)
     {
        setBack(element);
+       return;
     }
     while(idx)
     {
@@ -313,7 +297,7 @@ void List<T>::clear()
     while(p != NULL)
     {
         q = p->getNext();
-        free(p);
+        delete p;
         p = q;
     }
 
@@ -324,22 +308,21 @@ void List<T>::clear()
 template <typename T>
 bool List<T>::empty()
 {
-   if(m_size == 0) return true;
-   return false;
+   return m_size == 0;
 }
-
 
 template <typename T>
-void List<T>::print()
+ListIterator<T> List<T>::begin()
 {
-   ListNode<T>*p = m_head;
-   while(p != NULL)
-   {
-       std::cout<< std::to_string(p->getData()) << " ";
-       p = p->getNext();
-   }
-    std::cout<< "\n";
+    return ListIterator<T>(m_head);
 }
+
+template <typename T>
+ListIterator<T> List<T>::end()
+{
+    return ListIterator<T>(m_tail);
+}
+
 
 
 

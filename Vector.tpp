@@ -16,15 +16,17 @@ Vector<T>::Vector(const Vector& rhs)
 { 
     m_size = rhs.m_size;
     m_capacity = rhs.m_capacity; 
+    delete[] m_data;
     m_data = new T[m_capacity]; 
-    memcpy(m_data, rhs.m_data, m_capacity * sizeof(T));
-
+    std::copy(rhs.m_data, rhs.m_data + rhs.m_size, m_data);
 } 
 
 template <typename T>
 Vector<T>::~Vector() 
 { 
     delete[] this->m_data; 
+    m_data = nullptr;
+    
 }
 
 template <typename T>
@@ -42,13 +44,13 @@ T& Vector<T>::operator[](std::size_t idx)
 template <typename T>
 Vector<T>& Vector<T>::operator=(const Vector& rhs)
 {
-    if(m_capacity != rhs.m_capacity)
+    if(m_capacity < rhs.m_capacity)
     {
         delete[] m_data;
         m_data = new T[rhs.m_capacity];
     }
     m_capacity = rhs.m_capacity;
-    memcpy(m_data, rhs.m_data, m_capacity * sizeof(T));
+    std::copy(rhs.m_data, rhs.m_data + rhs.m_size, m_capacity * sizeof(T));
 
     return *this;
 }
@@ -56,7 +58,7 @@ Vector<T>& Vector<T>::operator=(const Vector& rhs)
 template<typename U>
 std::ostream& operator<<(std::ostream& os, const Vector<U>& vec)
 {
-   for(std::size_t idx = 0; idx < vec.m_capacity; ++idx)
+   for(std::size_t idx = 0; idx < vec.m_size; ++idx)
    {
        os << vec.m_data[idx] << " ";
    }
@@ -87,10 +89,11 @@ void Vector<T>::insert(size_t idx, T element)
     }
 
     if(idx >= 0 && idx <= this->m_size){
-        for(size_t i = idx; i < this->m_size - 1; ++i){
-            this->m_data[i+1] = this->m_data[i];
-            this->m_size++;
+        for(size_t i = idx; i < this->m_size - 1; ++i)
+        {
+            this->m_data[i+1] = this->m_data[i]; 
         }
+         this->m_size++;
          this->m_data[idx] = element;
     }
 }
@@ -98,27 +101,13 @@ void Vector<T>::insert(size_t idx, T element)
 template <typename T>
 void Vector<T>::pushFront(T element)
 {
-    if(this->m_capacity <= this->m_size) //daca mai avem loc in vector
-    {
-        reserve((1+m_capacity) * 2);
-    }
-    
-    for(size_t i = m_size; i > 0; --i){
-        this->m_data[i] = this->m_data[i-1];
-    }
-    this->m_data[0] = element;
-    this->m_size++;
+    insert(0,element);
 }
 
 template <typename T>
 void Vector<T>::pushBack(T element)
 {
-    if(this->m_capacity <= this->m_size) //daca mai avem loc in vector
-    {
-        reserve((1+m_capacity) * 2);
-    }
-
-    this->m_data[m_size++] = element;
+    insert(m_size, element);
 }
 
 template <typename T>
@@ -134,27 +123,13 @@ void Vector<T>::erase(size_t idx)
 template <typename T>
 void Vector<T>::popFront()
 {
-    //T front = m_data[0];   
-    for(size_t i = 0; i < m_size - 1; ++i)
-    {
-        m_data[i] = m_data[i + 1];
-    }
-    m_size--;
-    //return front;
+    erase(0);
 }
 
 template <typename T>
 void Vector<T>::popBack()
 {
-    //T back = m_data[m_size]; //maybe some memory dealocation?
-    m_size --;
-    //return back;
-}
-
-template <typename T>
-T Vector<T>::getElement(size_t idx)
-{
-    return this->m_data[idx];
+    erase(m_size);
 }
 
 template <typename T>
@@ -167,14 +142,6 @@ template <typename T>
 T Vector<T>::getBack()
 {
     return this->m_data[this->m_size-1];
-}
-
-template <typename T>
-void Vector<T>::setElement(size_t idx, T element)
-{
-    if(idx < this->m_size)
- 
-        this->m_data[idx] = element;
 }
 
 template <typename T>
@@ -192,16 +159,13 @@ void Vector<T>::setBack(T element)
 template <typename T>
 void Vector<T>::clear()
 {
-    for(size_t i = 0; i < this->m_size; ++i){
-        this->m_data[i] = 0;
-    }
+    m_size = 0;
 }
 
 template <typename T>
 bool Vector<T>::empty()
 {
-    if(m_size == 0) return true;
-    return false;
+    return m_size == 0;
 }
 
 template <typename T>
@@ -222,8 +186,34 @@ void Vector<T>::reserve(size_t newCapacity)
 }
 
 template <typename T>
-void Vector<T>::print(){
-    for(size_t i = 0; i < this->m_size; ++i)
-        std::cout << m_data[i] << " ";
+void Vector<T>::resize(std::size_t newSize)
+{
+    if(newSize < 0) return;
+    if(newSize < m_capacity)
+    {
+        for(std::size_t idx = m_size; idx < newSize; ++idx)
+        {
+            m_data[idx] = default;
+        }
+
+    }else
+    {
+        reserve((m_capacity + 1) * 2);
+    }
+    m_size = newSize;
 }
+
+template <typename T>
+VectorIterator<T> Vector<T>::begin()
+{
+    return VectorIterator<T>(m_data);
+}
+
+template <typename T>
+VectorIterator<T> Vector<T>::end()
+{
+    return VectorIterator<T>(m_data + m_size);
+}
+
+
 

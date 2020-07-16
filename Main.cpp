@@ -7,20 +7,20 @@
 
 int main() 
 { 
-  Vector<int> vec;
-  vec.pushBack(1);
-  vec.pushBack(2);
-  vec.pushBack(3);
-  std::cout << vec[0] << std::endl; 
-  std::cout << vec[1] << std::endl; 
-  vec[0] = 10;
-  std::cout << vec[0] << std::endl; 
-  std::cout << vec[1] << std::endl; 
+  // Vector<int> vec;
+  // vec.pushBack(1);
+  // vec.pushBack(2);
+  // vec.pushBack(3);
+  // std::cout << vec[0] << std::endl; 
+  // std::cout << vec[1] << std::endl; 
+  // vec[0] = 10;
+  // std::cout << vec[0] << std::endl; 
+  // std::cout << vec[1] << std::endl; 
 
-  Vector<int> vec1;
-  vec1 = vec;
+  // Vector<int> vec1;
+  // vec1 = vec;
    
-   std::cout << vec1;
+  //  std::cout << vec1;
   // vec.pushBack(0);
   // vec.pushBack(1);
   // vec.pushBack(2);
@@ -47,9 +47,9 @@ int main()
   // vec.print();
 
 
-  ListNode<int> l(NULL, NULL, 2);
-  l.getData() = 1;
-  std::cout << l << "Miau\n";
+  // ListNode<int> l(NULL, NULL, 2);
+  // l.getData() = 1;
+  // std::cout << l << "Miau\n";
   // ListNode<int> lp(NULL, NULL, 1);
 
   // std::cout << l;
@@ -58,7 +58,7 @@ int main()
   // ListNode<int> ln(NULL, NULL, 3);
   // ListNode<int> l1(NULL, NULL, 4);
 
-  // std::cout << "Data from l: " << l.getData() << "\n";
+  // std::cout << ln;
 
   // l.setNext(&ln);
   // l.setPrev(&lp);
@@ -67,16 +67,16 @@ int main()
   // l.print();
   // l1.print();
 
-  List<int> list;
-  list.pushBack(18);
-  list.pushBack(19);
-  list.pushFront(17);
-  std::cout <<list;
+  // List<int> list;
+  // list.pushBack(18);
+  // list.pushBack(19);
+  // list.pushFront(17);
+  // std::cout <<list;
 
-  List<int> list1;
-  list1 = list;
-  list1[0] = 10;
-  std::cout <<list1 << " si " << list1[0] << "\n";
+  // List<int> list1;
+  // list1 = list;
+  // list1[0] = 10;
+  // std::cout <<list1 << " si " << list1[0] << "\n";
  
   // List<int> list1(list);
   // list1.print();
@@ -101,13 +101,15 @@ int main()
   // list.erase(2);
   // list.print();
 
-  Queue<int, List> q;
-  q.push(5);
-  q.push(6);
-  q.push(7);
-  q.print();
-  q.pop();
-  std::cout << q;
+  // Queue<int, List> q;
+  // q.push(5);
+  // q.push(6);
+  // q.push(7);
+  // q.print();
+  // q.pop();
+  // std::cout << q;
+
+
 
 
 
