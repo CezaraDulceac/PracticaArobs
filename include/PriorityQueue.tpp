@@ -84,12 +84,12 @@ void PriorityQueue<T,TContainer>::print()
 template <typename T, template <typename> typename TContainer>
 typename TContainer<T>::TIterator PriorityQueue<T,TContainer>::begin()
 {
-    return typename TContainer<T>::TIterator(m_container.begin());
+    return m_container.begin();
 }
 
 template <typename T, template <typename> typename TContainer>
 typename TContainer<T>::TIterator PriorityQueue<T,TContainer>::end()
 {
-    return typename TContainer<T>::TIterator(m_container.end());
+    return m_container.end();
 }
 
