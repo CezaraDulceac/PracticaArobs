@@ -189,7 +189,7 @@ template <typename T>
 void Vector<T>::resize(std::size_t newSize)
 {
     if(newSize < 0) return;
-    if(newSize < m_capacity)
+    if(newSize <= m_capacity)
     {
         for(std::size_t idx = m_size; idx < newSize; ++idx)
         {

@@ -60,15 +60,15 @@ include CMakeFiles/practica.dir/flags.make
 CMakeFiles/practica.dir/Main.cpp.o: CMakeFiles/practica.dir/flags.make
 CMakeFiles/practica.dir/Main.cpp.o: ../Main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cdulceac/problems/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/practica.dir/Main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/practica.dir/Main.cpp.o -c /home/cdulceac/problems/Main.cpp
+	g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/practica.dir/Main.cpp.o -c /home/cdulceac/problems/Main.cpp
 
 CMakeFiles/practica.dir/Main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/practica.dir/Main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cdulceac/problems/Main.cpp > CMakeFiles/practica.dir/Main.cpp.i
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cdulceac/problems/Main.cpp > CMakeFiles/practica.dir/Main.cpp.i
 
 CMakeFiles/practica.dir/Main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/practica.dir/Main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cdulceac/problems/Main.cpp -o CMakeFiles/practica.dir/Main.cpp.s
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cdulceac/problems/Main.cpp -o CMakeFiles/practica.dir/Main.cpp.s
 
 CMakeFiles/practica.dir/Main.cpp.o.requires:
 

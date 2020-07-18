@@ -3,11 +3,25 @@
 #include "ListNode.hpp"
 #include "Queue.hpp"
 #include "PriorityQueue.hpp"
-
+#include "Algorithms.hpp"
 #include <iostream>
 
 int main() 
 { 
+    int array[10] = { 0, 6, 5, 3, 1, 5, 26, 3, 8, 0 };
+    Vector<int> vec;
+    vec.resize(10);
+
+    std::cout <<  vec << std::endl;
+
+    pdv::copy(array, array + 10, vec.begin());
+
+    std::cout << vec << std::endl;
+
+    pdv::sort(vec.begin(),vec.end(), [](int a, int b){return a < b;});
+
+    std::cout << vec << std::endl;
+
   // Vector<int> vec;
   // vec.pushBack(1);
   // vec.pushBack(2);
@@ -109,18 +123,4 @@ int main()
   // q.print();
   // q.pop();
   // std::cout << q;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

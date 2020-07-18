@@ -123,19 +123,6 @@ practica/fast:
 	$(MAKE) -f CMakeFiles/practica.dir/build.make CMakeFiles/practica.dir/build
 .PHONY : practica/fast
 
-#=============================================================================
-# Target rules for targets named run_tests
-
-# Build rule for target.
-run_tests: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 run_tests
-.PHONY : run_tests
-
-# fast build rule for target.
-run_tests/fast:
-	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/build
-.PHONY : run_tests/fast
-
 Main.o: Main.cpp.o
 
 .PHONY : Main.o
@@ -172,7 +159,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... practica"
 	@echo "... edit_cache"
-	@echo "... run_tests"
 	@echo "... Main.o"
 	@echo "... Main.i"
 	@echo "... Main.s"
