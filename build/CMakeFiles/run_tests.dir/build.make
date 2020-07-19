@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/cdulceac/problems
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cdulceac/problems/Build
+CMAKE_BINARY_DIR = /home/cdulceac/problems/build
 
 # Utility rule file for run_tests.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/cdulceac/problems/Build
 include CMakeFiles/run_tests.dir/progress.make
 
 CMakeFiles/run_tests:
-	cd /home/cdulceac/problems/build && make
+	cd /home/cdulceac/problems/build && make test
 
 run_tests: CMakeFiles/run_tests
 run_tests: CMakeFiles/run_tests.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/run_tests.dir/clean:
 .PHONY : CMakeFiles/run_tests.dir/clean
 
 CMakeFiles/run_tests.dir/depend:
-	cd /home/cdulceac/problems/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cdulceac/problems /home/cdulceac/problems /home/cdulceac/problems/Build /home/cdulceac/problems/Build /home/cdulceac/problems/Build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cdulceac/problems/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cdulceac/problems /home/cdulceac/problems /home/cdulceac/problems/build /home/cdulceac/problems/build /home/cdulceac/problems/build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run_tests.dir/depend
 

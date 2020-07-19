@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Vector.hpp
+cstddef
+-
+ostream
+-
+VectorIterator.hpp
+../include/VectorIterator.hpp
+Vector.tpp
+../include/Vector.tpp
+
+../include/Vector.tpp
+Vector.hpp
+../include/Vector.hpp
+iostream
+-
+string.h
+-
+
+../include/VectorIterator.hpp
+iostream
+-
+VectorIterator.tpp
+../include/VectorIterator.tpp
+
+../include/VectorIterator.tpp
+VectorIterator.hpp
+../include/VectorIterator.hpp
+iostream
+-
+
+/home/cdulceac/problems/VectorTest.cpp
+Vector.hpp
+/home/cdulceac/problems/Vector.hpp
+base.hh
+/home/cdulceac/problems/base.hh
+
+/home/cdulceac/problems/base.hh
+
