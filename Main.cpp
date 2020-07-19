@@ -22,6 +22,16 @@ int main()
 
     std::cout << vec << std::endl;
 
+    int sum = pdv::reduce(vec.begin(), vec.end(), 0, [](int a, int b) {return a + b;});
+    std::cout << sum << "\n";
+
+    Vector<int> vec1;
+    vec1.resize(10);
+
+    pdv::transform(vec.begin(),vec.end(), vec1.begin(), [](int a){ return ++a;});
+    std::cout << vec1 << "\n";
+  
+
   // Vector<int> vec;
   // vec.pushBack(1);
   // vec.pushBack(2);

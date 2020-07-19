@@ -111,6 +111,80 @@ namespace pdv
         }
     }
 
+    template <typename TLhsInputIt, typename TRhsInputIt>
+    bool equal(TLhsInputIt lhsFirst, TLhsInputIt lhsLast, TRhsInputIt rhsFirst)
+    {
+        for(; lhsFirst != lhsLast; ++lhsFirst)
+        {
+            if(!(*lhsFirst == *(++rhsFirst)))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    template <typename TInputIt, typename TPredicate>
+    bool anyOf(TInputIt first, TInputIt last, TPredicate pred)
+    {
+        for(; first != last; ++first)
+        {
+            if(pred(*first))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    template <typename TInputIt, typename TPredicate>
+    bool allOf(TInputIt first, TInputIt last, TPredicate pred)
+    {
+        for(; first != last; ++first)
+        {
+            if(!pred(*first))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    template <typename TInputIt, typename TPredicate> 
+    bool noneOf(TInputIt first, TInputIt last, TPredicate pred)
+    {
+        for(; first != last; ++first)
+        {
+            if(pred(*first))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    template <typename TInputIt, typename TOutputIt, typename TUnaryFunc>
+    TOutputIt transform(TInputIt first, TInputIt last, TOutputIt output, TUnaryFunc func)
+    {
+        for(; first != last; ++first)
+        {
+            *output = func(*first);
+            ++output;
+        }
+        return output;
+    }
+
+    template <typename TInputIt, typename T, typename TBinaryFunc>
+    T reduce(TInputIt first, TInputIt last, T initValue, TBinaryFunc func)
+    {
+        for(; first != last; ++first)
+        {
+           initValue = func(*first, initValue);
+        }
+        return initValue;
+    }
+    
+
 
 
 }
