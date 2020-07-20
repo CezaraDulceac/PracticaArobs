@@ -17,6 +17,7 @@ set(HEADERS
 	include/Task.hpp
 	include/VectorIteraror.hpp
 	include/ListIterator.hpp
+	include/SyncronizedPriorityQueue.hpp
 )
 
 set(INCLUDE_DIRECTORIES
@@ -45,10 +46,4 @@ target_include_directories(${PROJECT_NAME} ${INCLUDE_DIRECTORIES})
 
 
 ### Custom Targets ###
-# add_custom_target(run_tests
-#     COMMAND "cd" ${CMAKE_CURRENT_SOURCE_DIR}/build "&&" "make" "test"
-# )
-# add_dependencies(run_tests vector_test_target)
-
-# set(GENERATE_COVERAGE_DATA_COMMAND llvm-profdata-10 merge -sparse default.profraw -o default.profdata)
-# set(SHOW_COVERAGE_REPORT llvm-cov-10 report ./vector_test_target -instr-profile=default.profdata)
+ 

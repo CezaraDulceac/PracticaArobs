@@ -12,6 +12,7 @@ CMakeFiles/practica.dir/Main.cpp.o: ../include/PriorityQueue.hpp
 CMakeFiles/practica.dir/Main.cpp.o: ../include/PriorityQueue.tpp
 CMakeFiles/practica.dir/Main.cpp.o: ../include/Queue.hpp
 CMakeFiles/practica.dir/Main.cpp.o: ../include/Queue.tpp
+CMakeFiles/practica.dir/Main.cpp.o: ../include/SynchronizedPriorityQueue.hpp
 CMakeFiles/practica.dir/Main.cpp.o: ../include/Vector.hpp
 CMakeFiles/practica.dir/Main.cpp.o: ../include/Vector.tpp
 CMakeFiles/practica.dir/Main.cpp.o: ../include/VectorIterator.hpp

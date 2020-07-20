@@ -3,6 +3,7 @@
 #include "ListNode.hpp"
 #include "Queue.hpp"
 #include "PriorityQueue.hpp"
+#include "SynchronizedPriorityQueue.hpp"
 #include "Algorithms.hpp"
 #include <iostream>
 
