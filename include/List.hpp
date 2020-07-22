@@ -12,10 +12,12 @@ class List
 public:
     List();
     List(const List& rhs);
+    List(List&& rhs);
     ~List();
 
     List<T>& operator=(const List<T>& rhs);
-
+    List<T>& operator=(List<T>&& rhs);
+    
     std::size_t getSize();
 
     void insert(std::size_t idx, T element);

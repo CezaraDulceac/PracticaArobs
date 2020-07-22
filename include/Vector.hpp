@@ -13,9 +13,11 @@ public:
 
     Vector();
     Vector(const Vector& rhs);
+    Vector(Vector&& rhs);
     ~Vector();
 
     Vector<T>& operator=(const Vector& rhs);
+    Vector<T>& operator=(Vector&& rhs);
 
     std::size_t getSize();
     std::size_t getCapacity();

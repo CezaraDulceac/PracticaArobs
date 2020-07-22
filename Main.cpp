@@ -4,6 +4,8 @@
 #include "Queue.hpp"
 #include "PriorityQueue.hpp"
 #include "SynchronizedPriorityQueue.hpp"
+#include "Task.hpp"
+#include "TaskScheduler.hpp"
 #include "Algorithms.hpp"
 #include <iostream>
 

@@ -19,6 +19,9 @@ public:
     ListIterator& operator+=(std::size_t difference);
     ListIterator& operator-=(std::size_t difference);
 
+    ListIterator operator+(std::size_t difference);
+    ListIterator operator-(std::size_t difference);
+
     T& operator*();
 
 

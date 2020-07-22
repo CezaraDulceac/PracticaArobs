@@ -5,7 +5,7 @@
 #include <mutex>
 #include "Vector.hpp"
 
-template <typename T, template <typename> typename TContainer, typename TLock = std::mutex>
+template <typename T, template <typename> typename TContainer = Vector, typename TLock = std::mutex>
 class SPriorityQueue
 {
 public:
@@ -19,6 +19,7 @@ public:
 
     void push(T element);
     T pop();
+    bool tryPop(T& value);
 
     void clear();
     bool empty();
@@ -26,7 +27,7 @@ public:
     template <typename U, template <typename> typename UTContainer, typename UTLock>
     friend std::ostream& operator<<(std::ostream& os, const SPriorityQueue<U,UTContainer, UTLock>& pq);
 
-    typename TContainer<T>::TIterator begin();
+    typename TContainer<T>::TIterator begin(); //not done yet
     typename TContainer<T>::TIterator end();
 
 private:

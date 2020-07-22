@@ -19,6 +19,9 @@ public:
     VectorIterator& operator+=(std::size_t difference);
     VectorIterator& operator-=(std::size_t difference);
 
+    VectorIterator operator+(std::size_t difference);
+    VectorIterator operator-(std::size_t difference);
+
     T& operator*();
 
 private:

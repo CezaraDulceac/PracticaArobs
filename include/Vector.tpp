@@ -9,6 +9,7 @@ Vector<T>::Vector()
     m_capacity = INITIAL_CAPACITY; //sa nu se apeleze de mai multe ori reserve
     m_size = 0;
     m_data = new T[INITIAL_CAPACITY];
+    std::cout << "Vector Ctor" << std::endl;
 }
 
 template <typename T>
@@ -19,14 +20,23 @@ Vector<T>::Vector(const Vector& rhs)
     delete[] m_data;
     m_data = new T[m_capacity]; 
     std::copy(rhs.m_data, rhs.m_data + rhs.m_size, m_data);
+    std::cout << "Vector Copy Ctor" << std::endl;
 } 
+
+template<typename T>
+Vector<T>::Vector(Vector&& rhs)
+{
+    m_data = rhs.m_data;
+    rhs.m_data = nullptr;
+    std::cout << "Vector Move Ctor" << std::endl;
+}
 
 template <typename T>
 Vector<T>::~Vector() 
 { 
     delete[] this->m_data; 
     m_data = nullptr;
-    
+    std::cout << "Vector Dtor" << std::endl;
 }
 
 template <typename T>
@@ -52,6 +62,22 @@ Vector<T>& Vector<T>::operator=(const Vector& rhs)
     m_capacity = rhs.m_capacity;
     std::copy(rhs.m_data, rhs.m_data + rhs.m_size, m_capacity * sizeof(T));
 
+    return *this;
+}
+
+template <typename T>
+Vector<T>& Vector<T>::operator=(Vector&& rhs)
+{
+
+    m_capacity = rhs.m_capacity;
+    m_size = rhs.m_size;
+    m_data = rhs.m_data;
+
+    rhs.m_data = nullptr;
+    rhs.m_capacity = rhs.m_size = 0;
+    
+    std::cout << "Data Move Assignment Op" << std::endl;
+    
     return *this;
 }
 

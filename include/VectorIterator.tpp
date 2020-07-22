@@ -54,6 +54,25 @@ VectorIterator<T>& VectorIterator<T>::operator-=(std::size_t difference)
     return *this;
 }
 
+
+template <typename T>
+VectorIterator<T> VectorIterator<T>::operator+(std::size_t difference)
+{
+    VectorIterator<T> it;
+    it.m_value = m_value + difference;
+
+    return it;
+}
+
+template <typename T>
+VectorIterator<T> VectorIterator<T>::operator-(std::size_t difference)
+{
+    VectorIterator<T> it;
+    it.m_value = m_value - difference;
+
+    return it;
+}
+
 template <typename T>
 T& VectorIterator<T>::operator*()
 {

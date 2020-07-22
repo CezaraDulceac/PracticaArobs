@@ -71,6 +71,18 @@ T SPriorityQueue<T,TContainer,TLock>::pop()
 }
 
 template <typename T, template <typename> typename TContainer, typename TLock>
+bool SPriorityQueue<T,TContainer,TLock>::tryPop(T& value)
+{
+    m_lock.lock();
+    if(!m_container.isEmpty())
+    {
+        value = m_container.pop();
+        return true;
+    }
+    return false;
+}
+
+template <typename T, template <typename> typename TContainer, typename TLock>
 void SPriorityQueue<T,TContainer,TLock>::clear()
 {
     m_lock.lock();

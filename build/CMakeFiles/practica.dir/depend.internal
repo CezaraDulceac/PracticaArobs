@@ -14,6 +14,11 @@ CMakeFiles/practica.dir/Main.cpp.o
  ../include/Queue.hpp
  ../include/Queue.tpp
  ../include/SynchronizedPriorityQueue.hpp
+ ../include/Task.hpp
+ ../include/Task.tpp
+ ../include/TaskArgument.hpp
+ ../include/TaskResult.hpp
+ ../include/TaskScheduler.hpp
  ../include/Vector.hpp
  ../include/Vector.tpp
  ../include/VectorIterator.hpp
