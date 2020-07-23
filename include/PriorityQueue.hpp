@@ -7,6 +7,7 @@ template <typename T, template <typename> typename TContainer>
 class PriorityQueue
 {
 public:
+
     PriorityQueue();
     PriorityQueue(const PriorityQueue& rhs);
     ~PriorityQueue();

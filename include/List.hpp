@@ -10,6 +10,8 @@ template <typename T>
 class List
 {
 public:
+    using TIterator = ListIterator<T>;
+
     List();
     List(const List& rhs);
     List(List&& rhs);
@@ -20,7 +22,7 @@ public:
     
     std::size_t getSize();
 
-    void insert(std::size_t idx, T element);
+    void insert(TIterator pos, T element);
     void pushFront(T element);
     void pushBack(T element);
 
@@ -42,8 +44,8 @@ public:
     template<typename U>
     friend std::ostream& operator<<(std::ostream& os, const List<U>& vec);
 
-    ListIterator<T> begin();
-    ListIterator<T> end();
+    TIterator begin();
+    TIterator end();
     
 private:
 

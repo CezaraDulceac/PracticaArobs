@@ -90,10 +90,6 @@ T& List<T>::operator[](std::size_t idx)
 template <typename T>
 List<T>& List<T>::operator=(const List& rhs)
 {
-    while(m_head != NULL)
-    {
-        popFront(); //sa sterg elementele existente
-    }
     m_size = 0;
     m_head = NULL;
     m_tail = NULL;
@@ -112,11 +108,6 @@ List<T>& List<T>::operator=(const List& rhs)
 template <typename T>
 List<T>& List<T>::operator=(List&& rhs)
 {
-    while(m_head != NULL)
-    {
-        popFront(); //sa sterg elementele existente
-    }
-
     m_size = rhs.m_size;
     rhs.m_size = 0;
 
@@ -144,27 +135,27 @@ std::ostream& operator<<(std::ostream& os, const List<U>& ln)
 }
 
 template <typename T>
-void List<T>::insert(size_t idx, T element)
+void List<T>::insert(List::TIterator pos, T element)
 {
-    if(idx < 0 || idx > m_size) return;
+    if(pos < 0 || pos > m_size) return;
 
     ListNode<T>* node = new ListNode<T>(NULL,NULL,element);
 
     ListNode<T>* p = m_head;
-    if(idx == 0) 
+    if(pos == 0) 
     {
         pushFront(element);
         return;
     }
-    if(idx == m_size)
+    if(pos == m_size)
     {
         pushBack(element);
         return;
     }
-    while(idx)
+    while(pos)
     {
         p = p->getNext();
-        --idx;
+        --pos;
     }
 
     p->getPrev()->setNext(node);

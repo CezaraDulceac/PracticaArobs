@@ -17,7 +17,6 @@ Vector<T>::Vector(const Vector& rhs)
 { 
     m_size = rhs.m_size;
     m_capacity = rhs.m_capacity; 
-    delete[] m_data;
     m_data = new T[m_capacity]; 
     std::copy(rhs.m_data, rhs.m_data + rhs.m_size, m_data);
     std::cout << "Vector Copy Ctor" << std::endl;
@@ -107,20 +106,20 @@ size_t Vector<T>::getCapacity()
 }
 
 template <typename T>
-void Vector<T>::insert(size_t idx, T element)
+void Vector<T>::insert(Vector::TIterator pos, T element)
 {
     if(this->m_capacity <= this->m_size) //daca mai avem loc in vector
     {
-        reserve((1+m_capacity) * 2);
+        reserve((1 + m_capacity) * 2);
     }
 
-    if(idx >= 0 && idx <= this->m_size){
-        for(size_t i = idx; i < this->m_size - 1; ++i)
+    if(pos >= 0 && pos <= this->m_size){
+        for(size_t i = pos; i < this->m_size - 1; ++i)
         {
             this->m_data[i+1] = this->m_data[i]; 
         }
          this->m_size++;
-         this->m_data[idx] = element;
+         this->m_data[pos] = element;
     }
 }
 
@@ -229,10 +228,16 @@ void Vector<T>::resize(std::size_t newSize)
     m_size = newSize;
 }
 
+// template <typename T>
+// using TIterator =  Vector<T>::template VectorIterator<T>;
+
+// template <typename T>
+// using TIterator =  Vector::VectorIterator<T>;
+
 template <typename T>
 VectorIterator<T> Vector<T>::begin()
 {
-    return Iterator(m_data);
+    return VectorIterator<T>(m_data);
 }
 
 template <typename T>

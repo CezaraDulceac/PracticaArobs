@@ -3,9 +3,9 @@
 #include <cstddef>
 #include <iostream>
 #include <mutex>
-#include "Vector.hpp"
+#include "List.hpp"
 
-template <typename T, template <typename> typename TContainer = Vector, typename TLock = std::mutex>
+template <typename T, template <typename> typename TContainer = List, typename TLock = std::mutex>
 class SPriorityQueue
 {
 public:

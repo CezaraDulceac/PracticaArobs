@@ -8,8 +8,8 @@
 
 template <typename T>
 class Vector{
-    using Iterator = VectorIterator<T>;
 public:
+    using TIterator =  VectorIterator<T>;
 
     Vector();
     Vector(const Vector& rhs);
@@ -22,7 +22,7 @@ public:
     std::size_t getSize();
     std::size_t getCapacity();
 
-    void insert(std::size_t idx, T element);
+    void insert(TIterator pos, T element);
     void pushFront(T element);
     void pushBack(T element);
     
@@ -48,8 +48,8 @@ public:
     void reserve(std::size_t newCapacity);
     void resize(std::size_t newSize);
 
-    VectorIterator<T> begin();
-    VectorIterator<T> end();
+    TIterator begin();
+    TIterator end();
 
 private:
     std::size_t m_capacity;

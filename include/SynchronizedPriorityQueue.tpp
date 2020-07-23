@@ -93,6 +93,7 @@ void SPriorityQueue<T,TContainer,TLock>::clear()
 template <typename T, template <typename> typename TContainer, typename TLock>
 bool SPriorityQueue<T,TContainer,TLock>::empty()
 {   
+    //TLock guard(m_lock);
     m_lock.lock();
     bool emp = m_container.empty();
     m_lock.unlock();

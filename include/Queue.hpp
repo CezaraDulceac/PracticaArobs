@@ -7,6 +7,7 @@ template <typename T, template <typename> typename TContainer>
 class Queue
 {
 public:
+    //using TIterator = typename TContainer::TIterator;
     Queue();
     Queue(const Queue& rhs);
     ~Queue();
