@@ -1,0 +1,3 @@
+/home/cdulceac/problems/build/CMakeFiles/rebuild_cache.dir
+/home/cdulceac/problems/build/CMakeFiles/practica.dir
+/home/cdulceac/problems/build/CMakeFiles/edit_cache.dir

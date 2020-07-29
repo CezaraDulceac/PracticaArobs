@@ -11,28 +11,33 @@
 
 int main() 
 { 
-    int array[10] = { 0, 6, 5, 3, 1, 5, 26, 3, 8, 0 };
-    Vector<int> vec;
-    vec.resize(10);
+    // int array[10] = { 0, 6, 5, 3, 1, 5, 26, 3, 8, 0 };
+    // Vector<int> vec;
+    // vec.resize(10);
 
-    std::cout <<  vec << std::endl;
+    // std::cout <<  vec << std::endl;
 
-    pdv::copy(array, array + 10, vec.begin());
+    // pdv::copy(array, array + 10, vec.begin());
 
-    std::cout << vec << std::endl;
+    // std::cout << vec << std::endl;
 
-    pdv::sort(vec.begin(),vec.end(), [](int a, int b){return a < b;});
+    // pdv::sort(vec.begin(),vec.end(), [](int a, int b){return a < b;});
 
-    std::cout << vec << std::endl;
+    // std::cout << vec << std::endl;
 
-    int sum = pdv::reduce(vec.begin(), vec.end(), 0, [](int a, int b) {return a + b;});
-    std::cout << sum << "\n";
+    // int sum = pdv::reduce(vec.begin(), vec.end(), 0, [](int a, int b) {return a + b;});
+    // std::cout << sum << "\n";
 
-    Vector<int> vec1;
-    vec1.resize(10);
+    // Vector<int> vec1;
+    // vec1.resize(10);
 
-    pdv::transform(vec.begin(),vec.end(), vec1.begin(), [](int a){ return ++a;});
-    std::cout << vec1 << "\n";
+
+    // pdv::transform(vec.begin(),vec.end(), vec1.begin(), [](int a){ return ++a;});
+    // std::cout << vec1 << "\n";
+
+
+    TaskScheduler ts(3);
+    ts.schedule(TaskArgument(2,3),2);
   
 
   // Vector<int> vec;
@@ -46,15 +51,24 @@ int main()
   // std::cout << vec[1] << std::endl; 
 
   // Vector<int> vec1;
-  // vec1 = vec;
-   
-  //  std::cout << vec1;
-  // vec.pushBack(0);
-  // vec.pushBack(1);
-  // vec.pushBack(2);
-  // vec.pushBack(3);
-  // vec.pushBack(4);
-  // vec.pushFront(5);
+  // // vec1 = vec;
+  // vec1.resize(5);
+  // vec1[0] = 0;
+  // vec1[1] = 1;
+  // vec1[2] = 2;
+  // vec1[3] = 3;
+  // vec1[4] = 4;
+
+  // vec1.insert(vec1.begin() + 5, 10);
+  // std::cout << vec1;
+  // vec1.erase(vec1.begin() + 2);
+  // vec1.pushBack(11);
+  // vec1.pushFront(1);
+  // std::cout << vec1;
+  // vec1.popBack();
+  // std::cout << "popB " << vec1;
+  // vec1.popFront();
+  // std::cout << "popFront " << vec1;
 
   // Vector<int> vec2 = vec; //copy constructor
 
@@ -96,9 +110,39 @@ int main()
   // l1.print();
 
   // List<int> list;
-  // list.pushBack(18);
-  // list.pushBack(19);
-  // list.pushFront(17);
+  // list.pushFront(11);
+  // list.pushFront(12);
+  // list.pushFront(13);
+  // list.pushFront(14);
+  // std::cout <<list;
+  // list.insert(list.end(), 10);
+  // std::cout <<list;
+  // list.insert(list.begin(), 15);
+  // std::cout <<list;
+  // //std::cout << "begin + 1 :\n";
+  // ListIterator<int> it2(list.begin() + 1);
+  // std::cout << *it2 << "\n";
+  // list.insert(list.begin() + 1, 11);
+  // std::cout <<list;
+
+  // std::cout << "erase:\n";
+  // list.erase(list.begin());
+  // list.erase(list.end());
+  // list.erase(list.begin() + 1);
+  // std::cout <<list;
+
+
+  // std::cout << "-----------------------------------\n";
+  
+  // ListIterator<int> it(list.begin());
+  // ListIterator<int> it1(list.end());
+  
+  // std::cout << *it << " " << *it1 << "\n";
+  // std::cout <<list;
+
+  // if(it != it1) std::cout << "< --- true\n";
+  // if(it1 < it) std::cout << "< --- false\n";
+
   // std::cout <<list;
 
   // List<int> list1;

@@ -135,28 +135,23 @@ std::ostream& operator<<(std::ostream& os, const List<U>& ln)
 }
 
 template <typename T>
-void List<T>::insert(List::TIterator pos, T element)
+void List<T>::insert(TIterator pos, T element)
 {
-    if(pos < 0 || pos > m_size) return;
+    //if(pos < 0 || pos > m_size) return;
 
-    ListNode<T>* node = new ListNode<T>(NULL,NULL,element);
-
-    ListNode<T>* p = m_head;
-    if(pos == 0) 
+    if(!(pos != begin())) 
     {
         pushFront(element);
         return;
     }
-    if(pos == m_size)
+    if(!(pos != end()))
     {
         pushBack(element);
         return;
     }
-    while(pos)
-    {
-        p = p->getNext();
-        --pos;
-    }
+    
+    ListNode<T>* node = new ListNode<T>(NULL,NULL,element);
+    ListNode<T>* p = pos.get_m_value();
 
     p->getPrev()->setNext(node);
     node->setPrev(p->getPrev());
@@ -240,29 +235,25 @@ size_t List<T>::getSize()
 }
 
 template <typename T>
-void List<T>::erase(size_t idx)
+void List<T>::erase(TIterator pos)
 {
-    if(idx < 0 || idx > m_size) return;
-
     ListNode<T>* p = m_head;
-    if(idx == 0) 
+    if(!(pos != begin())) 
     {
         popFront();
         return;
     }
-    if(idx == m_size)
+    if(!(pos != end()))
     {
         popBack();
         return;
     }
-    while(idx)
+    while(pos != begin())
     {
         p = p->getNext();
-        --idx;
+        --pos;
     }
 
-    // p->getPrev()->setNext(p->getNext()); --facut in destructor
-    // p->getNext()->setPrev(p->getPrev());
     delete p;
     --m_size;
 }

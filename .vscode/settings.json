@@ -47,6 +47,7 @@
         "mutex": "cpp",
         "thread": "cpp",
         "functional": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "future": "cpp"
     }
 }

@@ -25,7 +25,7 @@ set(INCLUDE_DIRECTORIES
 )
 
 set(CMAKE_CXX_COMPILER g++)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -Wextra -Wpedantic -Werror -fsanitize=address -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -Wextra -Wpedantic -Werror ") #-fsanitize=address -g
 
 
 ### Test Targets ###

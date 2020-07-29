@@ -34,3 +34,8 @@ std::ostream& operator<<(std::ostream& os, const Task& t)
     return os;
 }
 
+
+std::function<TaskResult(TaskArgument)> Task::get_m_function()
+{
+    return m_function;
+}

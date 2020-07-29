@@ -26,7 +26,7 @@ public:
     void pushFront(T element);
     void pushBack(T element);
 
-    void erase(std::size_t idx);
+    void erase(TIterator pos);
     void popFront();
     void popBack();
     

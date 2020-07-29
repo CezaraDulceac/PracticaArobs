@@ -2,6 +2,7 @@
 #define TASKSCHEDULER_HPP
 #include "SynchronizedPriorityQueue.hpp"
 #include "Task.hpp"
+#include "Vector.hpp"
 #include <iostream>
 #include <future>
 #include <thread>
@@ -18,11 +19,22 @@ public:
 
 
 private:
-    SPriorityQueue<std::packaged_task<Task>> m_tasks;
-    Vector<std::thread> m_thread;
+    SPriorityQueue<std::packaged_task<TaskResult(TaskArgument)>> m_tasks;
+    Vector<std::thread> m_threads;
     std::atomic<bool> m_stop;
 
-    void processTasks();
+    void processTasks()
+    {
+        while(!m_stop)
+        {
+            std::packaged_task<TaskResult(TaskArgument)> popRez;
+            if(m_tasks.tryPop(popRez))
+            {
+                popRez();
+            }
+        }
+    }
 };
 
+#include "TaskScheduler.tpp"
 #endif //TASKSCHEDULER_HPP

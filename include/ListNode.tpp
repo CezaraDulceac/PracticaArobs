@@ -9,13 +9,13 @@ template <typename T>
     m_next = next;
     if(m_next != NULL)
     {
-        next->m_prev = *this;
+        next->m_prev = this;
     }
 
     m_prev = prev;
     if(m_prev != NULL)
     {
-        prev->m_next = *this;
+        prev->m_next = this;
     } 
 }
      
