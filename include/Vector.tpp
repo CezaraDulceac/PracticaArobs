@@ -106,7 +106,7 @@ size_t Vector<T>::getCapacity()
 }
 
 template <typename T>
-void Vector<T>::insert(TIterator pos, T element)
+void Vector<T>::insert(TIterator pos, T& element)
 {
     if(this->m_capacity <= this->m_size) //daca nu mai avem loc in vector
     {
@@ -122,15 +122,45 @@ void Vector<T>::insert(TIterator pos, T element)
 }
 
 template <typename T>
-void Vector<T>::pushFront(T element)
+void Vector<T>::insert(TIterator pos, T&& element)
+{
+    if(this->m_capacity <= this->m_size) //daca nu mai avem loc in vector
+    {
+        reserve((1 + m_capacity) * 2);
+    }
+    
+    ++m_size;
+    for(TIterator it = end()-1; it != pos; --it)
+    {
+        *it = *(it-1) ; 
+    }
+    *pos = std::move(element);
+}
+
+template <typename T>
+void Vector<T>::pushFront(T& element)
 {
     insert(begin(),element);
 }
 
 template <typename T>
-void Vector<T>::pushBack(T element)
+void Vector<T>::pushFront(T&& element)
 {
-    insert(end(), element);
+    insert(begin(),element);
+}
+
+template <typename T>
+void Vector<T>::pushBack(T& element)
+{
+    //insert(end(), element);
+    m_data[m_size++] = element;
+}
+
+template <typename T>
+void Vector<T>::pushBack(T&& element)
+{
+    // insert(end(), std::move(element));
+     m_data[m_size++] = std::move(element);
 }
 
 template <typename T>

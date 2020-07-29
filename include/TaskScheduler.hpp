@@ -19,7 +19,7 @@ public:
 
 
 private:
-    SPriorityQueue<std::packaged_task<TaskResult(TaskArgument)>> m_tasks;
+    SPriorityQueue<std::packaged_task<TaskResult()>> m_tasks;
     Vector<std::thread> m_threads;
     std::atomic<bool> m_stop;
 
@@ -27,7 +27,7 @@ private:
     {
         while(!m_stop)
         {
-            std::packaged_task<TaskResult(TaskArgument)> popRez;
+            std::packaged_task<TaskResult()> popRez;
             if(m_tasks.tryPop(popRez))
             {
                 popRez();

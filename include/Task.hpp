@@ -11,17 +11,17 @@
 class Task{
 public:
 
-    Task(std::int64_t prio, std::function<TaskResult(TaskArgument)> func);
+    Task(std::int64_t prio, std::function<TaskResult()> func);
 
-    TaskResult operator()(TaskArgument arg);
+    TaskResult operator()();
     bool operator<(const Task& rhs);
 
     friend std::ostream& operator<<(std::ostream& os, const Task& t);
-    std::function<TaskResult(TaskArgument)> get_m_function();
+    std::function<TaskResult()> get_m_function();
     
 private:
     std::int64_t m_priority;
-    std::function<TaskResult(TaskArgument)> m_function;
+    std::function<TaskResult()> m_function;
     std::int64_t getPriority();
 };
 #include "Task.tpp"

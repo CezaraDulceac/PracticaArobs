@@ -17,7 +17,9 @@ public:
 
     size_t getSize();
 
-    void push(T element);
+    void push(T& element);
+    void push(T&& element);
+    
     T pop();
     bool tryPop(T& value);
 

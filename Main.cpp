@@ -28,6 +28,9 @@ int main()
     // int sum = pdv::reduce(vec.begin(), vec.end(), 0, [](int a, int b) {return a + b;});
     // std::cout << sum << "\n";
 
+    // vec.insert(vec.begin(), 2);
+    // std::cout << vec << std::endl;
+
     // Vector<int> vec1;
     // vec1.resize(10);
 
@@ -36,8 +39,8 @@ int main()
     // std::cout << vec1 << "\n";
 
 
-    TaskScheduler ts(3);
-    ts.schedule(TaskArgument(2,3),2);
+    // TaskScheduler ts(3);
+    // ts.schedule(TaskArgument(2,3),2);
   
 
   // Vector<int> vec;

@@ -24,14 +24,17 @@
      }
  }
 
+
  std::future<TaskResult> TaskScheduler::schedule(TaskArgument arg, std::int64_t prio)
  {
-    auto lambda = [arg](TaskArgument targ){ TaskResult a; a.sum = targ.a + targ.b; return a;};
+ 
+    auto lambda = [arg](){TaskResult a; a.sum = arg.a + arg.b; return a;};
     Task task(prio, lambda);
 
-    std::packaged_task<TaskResult(TaskArgument)> packedTask(task);
+    std::packaged_task<TaskResult()> packedTask(task);
     
     std::future<TaskResult> futureTask = packedTask.get_future();
+    
     m_tasks.push(std::move(packedTask));
 
     return futureTask;
