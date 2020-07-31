@@ -37,4 +37,6 @@ private:
     TContainer<T> m_container;
     TLock m_lock;
 };
+
+#include "SynchronizedPriorityQueue.hpp"
 #endif //SPRIORITYQUEUE_HPP

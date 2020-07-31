@@ -2,6 +2,12 @@ cmake_minimum_required(VERSION 3.10.0)
 
 project(practica)
 
+
+
+set(CMAKE_CXX_COMPILER g++)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -Wextra -Wpedantic -Werror ") #-fsanitize=address -g
+
+
 ### Local Variables ###
 
 set(SOURCES
@@ -18,14 +24,15 @@ set(HEADERS
 	include/VectorIteraror.hpp
 	include/ListIterator.hpp
 	include/SyncronizedPriorityQueue.hpp
+	include/TaskArgument.hpp
+	include/TaskResult.hpp
+	include/TaskScheduler.hpp
 )
 
 set(INCLUDE_DIRECTORIES
 	PUBLIC include/
 )
 
-set(CMAKE_CXX_COMPILER g++)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -Wextra -Wpedantic -Werror ") #-fsanitize=address -g
 
 
 ### Test Targets ###

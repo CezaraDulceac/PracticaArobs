@@ -11,6 +11,11 @@
 
 int main() 
 { 
+    // SPriorityQueue<int> s;
+    // s.push(1);
+    // s.push(1);
+    // s.push(1);
+    // std::cout << s;
     // int array[10] = { 0, 6, 5, 3, 1, 5, 26, 3, 8, 0 };
     // Vector<int> vec;
     // vec.resize(10);

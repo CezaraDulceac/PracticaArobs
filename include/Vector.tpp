@@ -154,13 +154,14 @@ void Vector<T>::pushBack(T& element)
 {
     //insert(end(), element);
     m_data[m_size++] = element;
+
 }
 
 template <typename T>
 void Vector<T>::pushBack(T&& element)
 {
-    // insert(end(), std::move(element));
-     m_data[m_size++] = std::move(element);
+    //insert(end(), std::move(element));
+    m_data[m_size++] = std::move(element);
 }
 
 template <typename T>
