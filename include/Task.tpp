@@ -1,10 +1,10 @@
-#include "Task.hpp" 
+#include "Task.hpp"
 #include <ostream>
 
-Task::Task(int64_t prio, std::function<TaskResult()> func) 
+Task::Task(int64_t prio, std::packaged_task<TaskResult()> &&func)
 {
     m_priority = prio;
-    m_function = func;
+    m_function = std::move(func);
 }
 
 int64_t Task::getPriority()
@@ -12,30 +12,24 @@ int64_t Task::getPriority()
     return m_priority;
 }
 
-bool Task::operator<(const Task& rhs)
+bool Task::operator<(const Task &rhs)
 {
-    if(m_priority < rhs.m_priority)
+    if (m_priority < rhs.m_priority)
     {
         return true;
     }
     return false;
 }
 
-TaskResult Task::operator()()
+void Task::operator()()
 {
-    return m_function();
+    m_function();
 }
 
-std::ostream& operator<<(std::ostream& os, const Task& t)
+std::ostream &operator<<(std::ostream &os, const Task &t)
 {
-    os << "priority: " 
+    os << "priority: "
        << t.m_priority << "\n";
 
     return os;
-}
-
-
-std::function<TaskResult()> Task::get_m_function()
-{
-    return m_function;
 }

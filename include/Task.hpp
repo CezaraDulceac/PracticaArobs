@@ -3,26 +3,28 @@
 
 #include <cstdint>
 #include <ostream>
-#include <functional>
+#include <future>
 
+#include "Functional.hpp"
 #include "TaskArgument.hpp"
 #include "TaskResult.hpp"
 
-class Task{
+class Task
+{
 public:
+    Task() = default;
 
-    Task(std::int64_t prio, std::function<TaskResult()> func);
+    Task(std::int64_t prio, std::packaged_task<TaskResult()> &&func);
 
-    TaskResult operator()();
-    bool operator<(const Task& rhs);
+    void operator()();
+    bool operator<(const Task &rhs);
 
-    friend std::ostream& operator<<(std::ostream& os, const Task& t);
-    std::function<TaskResult()> get_m_function();
-    
+    friend std::ostream &operator<<(std::ostream &os, const Task &t);
+    std::int64_t getPriority();
+
 private:
     std::int64_t m_priority;
-    std::function<TaskResult()> m_function;
-    std::int64_t getPriority();
+    Function<void()> m_function;
 };
 #include "Task.tpp"
-#endif  //TASK_HPP
+#endif //TASK_HPP

@@ -4,8 +4,8 @@ project(practica)
 
 
 
-set(CMAKE_CXX_COMPILER g++)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -Wextra -Wpedantic -Werror ") #-fsanitize=address -g
+#set(CMAKE_CXX_COMPILER g++)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a -Wall -Wextra -Wpedantic -Werror -lpthread") #-fsanitize=address -g
 
 
 ### Local Variables ###
@@ -23,10 +23,11 @@ set(HEADERS
 	include/Task.hpp
 	include/VectorIteraror.hpp
 	include/ListIterator.hpp
-	include/SyncronizedPriorityQueue.hpp
+	include/SynchronizedPriorityQueue.hpp
 	include/TaskArgument.hpp
 	include/TaskResult.hpp
 	include/TaskScheduler.hpp
+	include/Functional.hpp
 )
 
 set(INCLUDE_DIRECTORIES
@@ -48,8 +49,15 @@ set(INCLUDE_DIRECTORIES
 
 ### Main Target ###
 
-add_executable(${PROJECT_NAME} ${SOURCES})
-target_include_directories(${PROJECT_NAME} ${INCLUDE_DIRECTORIES})
+add_executable(Release ${SOURCES})
+target_include_directories(Release ${INCLUDE_DIRECTORIES})
+target_compile_options(Release PRIVATE -std=c++2a -O3 -Wall -Wextra -Wpedantic -Werror -lpthread)
+target_link_libraries(Release -lpthread)
+
+add_executable(Debug ${SOURCES})
+target_include_directories(Debug ${INCLUDE_DIRECTORIES})
+target_compile_options(Debug PRIVATE -std=c++2a -Wall -Wextra -Wpedantic -Werror -lpthread -g)
+target_link_libraries(Debug -lpthread)
 
 
 ### Custom Targets ###
