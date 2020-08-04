@@ -28,10 +28,11 @@ private:
         while(!m_stop)
         {
             Task popRez;
-            if(m_tasks.tryPop(popRez))
+            if(m_tasks.tryPop(popRez)) 
             {
                 popRez();
             }
+            
         }
     }
 };

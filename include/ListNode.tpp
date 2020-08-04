@@ -4,7 +4,7 @@
 
 template <typename T>
 template <typename TData>
-explicit(std::is_same_v<T, TData>) ListNode<T>::ListNode(ListNode *prev, ListNode *next, TData &&data)
+ListNode<T>::ListNode(ListNode *prev, ListNode *next, TData &&data)
 {
     m_data = std::forward<TData>(data);
 

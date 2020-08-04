@@ -11,13 +11,18 @@
 
 int main()
 {
-  TaskScheduler scheduler(4);
+  TaskScheduler scheduler(5);
 
   TaskArgument arg(1, 2);
+  TaskArgument arg1(2, 2);
+
   auto future = scheduler.schedule(arg, 0);
+  auto future1 = scheduler.schedule(arg1, 1);
 
   std::cout << future.get().sum << std::endl;
+  //std::cout << future1.get().sum << std::endl;
 
+  //std::cout << "forth\n";
   // SPriorityQueue<int> s;
   // s.push(1);
   // s.push(1);

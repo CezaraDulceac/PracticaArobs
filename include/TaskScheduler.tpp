@@ -28,7 +28,12 @@ TaskScheduler::~TaskScheduler()
 std::future<TaskResult> TaskScheduler::schedule(TaskArgument arg, std::int64_t prio)
 {
 
-    auto lambda = [arg]() {TaskResult a; a.sum = arg.a + arg.b; return a; };
+    auto lambda = [arg]() 
+    {
+        TaskResult tr; 
+        tr.sum = arg.a + arg.b; 
+        return tr; 
+    };
 
     std::packaged_task<TaskResult()> packedTask(lambda);
 
@@ -37,7 +42,7 @@ std::future<TaskResult> TaskScheduler::schedule(TaskArgument arg, std::int64_t p
     Task task(prio, std::move(packedTask));
 
     m_tasks.push(std::move(task));
-
+    std::cout << "schedule \n";
     return futureTask;
 }
 

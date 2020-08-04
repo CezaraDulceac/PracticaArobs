@@ -8,7 +8,8 @@ class ListNode
 {
 public:
     template <typename TData>
-    ListNode(ListNode *prev, ListNode *next, TData &&data);
+    explicit(std::is_same_v<T, TData>) ListNode(ListNode *prev, ListNode *next, TData &&data);
+
     ListNode(const ListNode &rhs);
     ~ListNode();
 

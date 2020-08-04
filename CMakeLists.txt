@@ -35,6 +35,15 @@ set(INCLUDE_DIRECTORIES
 )
 
 
+set(CMAKE_C_COMPILER /usr/bin/clang)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++)
+
+# set(CMAKE_CXX_COMPILER g++)
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -Wextra -Wpedantic -Werror ") #-fsanitize=address -g
+
+# add_executable(${PROJECT_NAME} ${SOURCES})
+# target_include_directories(${PROJECT_NAME} ${INCLUDE_DIRECTORIES})
+
 
 ### Test Targets ###
 # add_executable(vector_test_target VectorTest.cpp)
@@ -49,16 +58,17 @@ set(INCLUDE_DIRECTORIES
 
 ### Main Target ###
 
+
+
 add_executable(Release ${SOURCES})
 target_include_directories(Release ${INCLUDE_DIRECTORIES})
-target_compile_options(Release PRIVATE -std=c++2a -O3 -Wall -Wextra -Wpedantic -Werror -lpthread)
-target_link_libraries(Release -lpthread)
+target_compile_options(Release PRIVATE -std=c++20 -O3 -Wall -Wextra -Werror -Wpedantic -pthread) 
+target_link_libraries(Release PRIVATE -lpthread)
 
 add_executable(Debug ${SOURCES})
 target_include_directories(Debug ${INCLUDE_DIRECTORIES})
-target_compile_options(Debug PRIVATE -std=c++2a -Wall -Wextra -Wpedantic -Werror -lpthread -g)
-target_link_libraries(Debug -lpthread)
-
+target_compile_options(Debug PRIVATE -std=c++20 -Wall -Wextra -Werror -Wpedantic -pthread -g) 
+target_link_libraries(Debug PRIVATE -lpthread)
 
 ### Custom Targets ###
  

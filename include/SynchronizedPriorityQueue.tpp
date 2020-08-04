@@ -20,6 +20,7 @@ SPriorityQueue<T, TContainer, TLock>::~SPriorityQueue()
 template <typename T, template <typename> typename TContainer, typename TLock>
 SPriorityQueue<T, TContainer, TLock> &SPriorityQueue<T, TContainer, TLock>::operator=(const SPriorityQueue &rhs)
 {
+
     m_lock.lock();
     m_container = rhs.m_container;
     m_lock.unlock();
@@ -44,10 +45,9 @@ size_t SPriorityQueue<T, TContainer, TLock>::getSize()
 template <typename T, template <typename> typename TContainer, typename TLock>
 void SPriorityQueue<T, TContainer, TLock>::push(T &task)
 {
-    //m_container.pushFront(element);
-
     std::size_t pos = 0;
     m_lock.lock();
+    
     for (std::size_t idx = 0; idx < m_container.getSize(); ++idx)
     {
         if (m_container[idx] < task)
@@ -62,8 +62,6 @@ void SPriorityQueue<T, TContainer, TLock>::push(T &task)
 template <typename T, template <typename> typename TContainer, typename TLock>
 void SPriorityQueue<T, TContainer, TLock>::push(T &&task)
 {
-    //m_container.pushFront(element);
-
     std::size_t pos = 0;
     m_lock.lock();
     for (std::size_t idx = 0; idx < m_container.getSize(); ++idx)
@@ -80,6 +78,7 @@ void SPriorityQueue<T, TContainer, TLock>::push(T &&task)
 template <typename T, template <typename> typename TContainer, typename TLock>
 T SPriorityQueue<T, TContainer, TLock>::pop()
 {
+  
     m_lock.lock();
     T task = m_container.getBack();
     m_container.popBack();
@@ -95,14 +94,16 @@ bool SPriorityQueue<T, TContainer, TLock>::tryPop(T &value)
     {
         value = std::move(m_container.getBack());
         m_container.popBack();
+        m_lock.unlock();
         return true;
     }
+    m_lock.unlock();
     return false;
 }
 
 template <typename T, template <typename> typename TContainer, typename TLock>
 void SPriorityQueue<T, TContainer, TLock>::clear()
-{
+{   
     m_lock.lock();
     m_container.clear();
     m_lock.unlock();
@@ -111,7 +112,6 @@ void SPriorityQueue<T, TContainer, TLock>::clear()
 template <typename T, template <typename> typename TContainer, typename TLock>
 bool SPriorityQueue<T, TContainer, TLock>::empty()
 {
-    //TLock guard(m_lock);
     m_lock.lock();
     bool emp = m_container.empty();
     m_lock.unlock();
