@@ -9,54 +9,58 @@
 #include "Algorithms.hpp"
 #include <iostream>
 
-int main() 
-{ 
-    // SPriorityQueue<int> s;
-    // s.push(1);
-    // s.push(1);
-    // s.push(1);
-    // std::cout << s;
-    // int array[10] = { 0, 6, 5, 3, 1, 5, 26, 3, 8, 0 };
-    // Vector<int> vec;
-    // vec.resize(10);
+int main()
+{
+  TaskScheduler scheduler(4);
 
-    // std::cout <<  vec << std::endl;
+  TaskArgument arg(1, 2);
+  auto future = scheduler.schedule(arg, 0);
 
-    // pdv::copy(array, array + 10, vec.begin());
+  std::cout << future.get().sum << std::endl;
 
-    // std::cout << vec << std::endl;
+  // SPriorityQueue<int> s;
+  // s.push(1);
+  // s.push(1);
+  // s.push(1);
+  // std::cout << s;
+  // int array[10] = { 0, 6, 5, 3, 1, 5, 26, 3, 8, 0 };
+  // Vector<int> vec;
+  // vec.resize(10);
 
-    // pdv::sort(vec.begin(),vec.end(), [](int a, int b){return a < b;});
+  // std::cout <<  vec << std::endl;
 
-    // std::cout << vec << std::endl;
+  // pdv::copy(array, array + 10, vec.begin());
 
-    // int sum = pdv::reduce(vec.begin(), vec.end(), 0, [](int a, int b) {return a + b;});
-    // std::cout << sum << "\n";
+  // std::cout << vec << std::endl;
 
-    // vec.insert(vec.begin(), 2);
-    // std::cout << vec << std::endl;
+  // pdv::sort(vec.begin(),vec.end(), [](int a, int b){return a < b;});
 
-    // Vector<int> vec1;
-    // vec1.resize(10);
+  // std::cout << vec << std::endl;
 
+  // int sum = pdv::reduce(vec.begin(), vec.end(), 0, [](int a, int b) {return a + b;});
+  // std::cout << sum << "\n";
 
-    // pdv::transform(vec.begin(),vec.end(), vec1.begin(), [](int a){ return ++a;});
-    // std::cout << vec1 << "\n";
+  // vec.insert(vec.begin(), 2);
+  // std::cout << vec << std::endl;
 
+  // Vector<int> vec1;
+  // vec1.resize(10);
 
-    // TaskScheduler ts(3);
-    // ts.schedule(TaskArgument(2,3),2);
-  
+  // pdv::transform(vec.begin(),vec.end(), vec1.begin(), [](int a){ return ++a;});
+  // std::cout << vec1 << "\n";
+
+  // TaskScheduler ts(3);
+  // ts.schedule(TaskArgument(2,3),2);
 
   // Vector<int> vec;
   // vec.pushBack(1);
   // vec.pushBack(2);
   // vec.pushBack(3);
-  // std::cout << vec[0] << std::endl; 
-  // std::cout << vec[1] << std::endl; 
+  // std::cout << vec[0] << std::endl;
+  // std::cout << vec[1] << std::endl;
   // vec[0] = 10;
-  // std::cout << vec[0] << std::endl; 
-  // std::cout << vec[1] << std::endl; 
+  // std::cout << vec[0] << std::endl;
+  // std::cout << vec[1] << std::endl;
 
   // Vector<int> vec1;
   // // vec1 = vec;
@@ -89,13 +93,11 @@ int main()
   //vec.erase(2);
   //vec.print();
 
-
-  // vec.popBack(); 
-  // vec.popBack(); 
+  // vec.popBack();
+  // vec.popBack();
   //vec.popFront();
   // std::cout << "\n";
   // vec.print();
-
 
   // ListNode<int> l(NULL, NULL, 2);
   // l.getData() = 1;
@@ -139,12 +141,11 @@ int main()
   // list.erase(list.begin() + 1);
   // std::cout <<list;
 
-
   // std::cout << "-----------------------------------\n";
-  
+
   // ListIterator<int> it(list.begin());
   // ListIterator<int> it1(list.end());
-  
+
   // std::cout << *it << " " << *it1 << "\n";
   // std::cout <<list;
 
@@ -157,15 +158,15 @@ int main()
   // list1 = list;
   // list1[0] = 10;
   // std::cout <<list1 << " si " << list1[0] << "\n";
- 
+
   // List<int> list1(list);
   // list1.print();
   // list.pushBack(4);
   // list.pushBack(5);
   // list.print();
-  // std::cout<< list.getElement(2) << " " 
+  // std::cout<< list.getElement(2) << " "
   //          << list.getFront() << " "
-  //          << list.getBack() << " " 
+  //          << list.getBack() << " "
   //          << list.getSize() << std::endl;
   // list.popFront();
   // list.print();

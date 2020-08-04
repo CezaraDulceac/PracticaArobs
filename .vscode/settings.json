@@ -48,6 +48,9 @@
         "thread": "cpp",
         "functional": "cpp",
         "iterator": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "bit": "cpp"
     }
 }

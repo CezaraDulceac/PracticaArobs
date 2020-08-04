@@ -38,5 +38,5 @@ private:
     TLock m_lock;
 };
 
-#include "SynchronizedPriorityQueue.hpp"
+#include "SynchronizedPriorityQueue.tpp"
 #endif //SPRIORITYQUEUE_HPP

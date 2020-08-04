@@ -4,37 +4,36 @@
 #include <cstddef>
 
 template <typename T>
-class ListNode{
+class ListNode
+{
 public:
+    template <typename TData>
+    ListNode(ListNode *prev, ListNode *next, TData &&data);
+    ListNode(const ListNode &rhs);
+    ~ListNode();
 
-   ListNode(ListNode* prev, ListNode * next, T data);
-   ListNode(const ListNode& rhs);
-   ~ListNode();
+    ListNode<T> &operator=(const ListNode &rhs);
 
-   ListNode<T>& operator=(const ListNode& rhs);
+    template <typename U>
+    friend std::ostream &operator<<(std::ostream &os, const ListNode<U> &vec);
 
-    template<typename U>
-    friend std::ostream& operator<<(std::ostream& os, const ListNode<U>& vec);
+    ListNode *getPrev();
+    ListNode *getNext();
 
-   ListNode* getPrev();
-   ListNode* getNext();
+    void setPrev(ListNode *prev);
+    void setNext(ListNode *next);
 
-   void setPrev(ListNode* prev);
-   void setNext(ListNode* next);
+    T &getData();
+    void setData(ListNode *data);
+    void setDataT(T data);
 
-   T& getData();
-   void setData(ListNode* data);
-   void setDataT(T data);
+    void print();
 
-   void print();
-
-    
 private:
-
-    ListNode* m_prev;
-    ListNode* m_next;
+    ListNode *m_prev;
+    ListNode *m_next;
     T m_data;
 };
 
 #include "ListNode.tpp"
-#endif  //LISTNODE_HPP
+#endif //LISTNODE_HPP
