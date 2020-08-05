@@ -227,7 +227,8 @@ void List<T>::pushFront(T &&element)
 template <typename T>
 void List<T>::pushBack(const T &element)
 {
-    ListNode<T> *node = new ListNode<T>(NULL, NULL, element);
+    
+    ListNode<T> *node = new ListNode<T>(nullptr, nullptr, element);
     if (m_head == NULL)
     {
         m_head = m_tail = node;
@@ -244,7 +245,9 @@ void List<T>::pushBack(const T &element)
 template <typename T>
 void List<T>::pushBack(T &&element)
 {
-    ListNode<T> *node = new ListNode<T>(NULL, NULL, std::move(element));
+     ++m_size;
+
+    ListNode<T> *node = new ListNode<T>(nullptr, nullptr, std::move(element));
     if (m_head == NULL)
     {
         m_head = m_tail = node;
@@ -254,8 +257,6 @@ void List<T>::pushBack(T &&element)
     m_tail->setNext(node);
     node->setPrev(m_tail);
     m_tail = node;
-
-    ++m_size;
 }
 
 template <typename T>
@@ -320,6 +321,7 @@ void List<T>::erase(TIterator pos)
 
     delete p;
     --m_size;
+    
 }
 
 template <typename T>
@@ -329,6 +331,11 @@ void List<T>::popFront()
     m_head = m_head->getNext();
     delete p;
     --m_size;
+
+    if(m_size == 0)
+    {
+        m_head = m_tail = nullptr;
+    }
 }
 
 template <typename T>
@@ -340,6 +347,11 @@ void List<T>::popBack()
         m_tail = m_tail->getPrev();
         delete p;
         --m_size;
+
+        if(m_size == 0)
+        {
+            m_head = m_tail = nullptr;
+        }
     }
 }
 
@@ -412,5 +424,5 @@ ListIterator<T> List<T>::begin()
 template <typename T>
 ListIterator<T> List<T>::end()
 {
-    return ListIterator<T>(m_tail);
+    return ListIterator<T>(m_tail) + 1;
 }

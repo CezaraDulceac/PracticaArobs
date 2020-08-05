@@ -16,6 +16,7 @@ public:
 
     Task(std::int64_t prio, std::packaged_task<TaskResult()> &&func);
 
+
     void operator()();
     bool operator<(const Task &rhs);
 

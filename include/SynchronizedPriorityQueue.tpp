@@ -45,9 +45,9 @@ size_t SPriorityQueue<T, TContainer, TLock>::getSize()
 template <typename T, template <typename> typename TContainer, typename TLock>
 void SPriorityQueue<T, TContainer, TLock>::push(T &task)
 {
-    std::size_t pos = 0;
-    m_lock.lock();
     
+    m_lock.lock();
+    std::size_t pos = 0;
     for (std::size_t idx = 0; idx < m_container.getSize(); ++idx)
     {
         if (m_container[idx] < task)
@@ -62,8 +62,8 @@ void SPriorityQueue<T, TContainer, TLock>::push(T &task)
 template <typename T, template <typename> typename TContainer, typename TLock>
 void SPriorityQueue<T, TContainer, TLock>::push(T &&task)
 {
-    std::size_t pos = 0;
     m_lock.lock();
+    std::size_t pos = 0;
     for (std::size_t idx = 0; idx < m_container.getSize(); ++idx)
     {
         if (m_container[idx] < task)
@@ -90,10 +90,12 @@ template <typename T, template <typename> typename TContainer, typename TLock>
 bool SPriorityQueue<T, TContainer, TLock>::tryPop(T &value)
 {
     m_lock.lock();
+
     if (!m_container.isEmpty())
     {
         value = std::move(m_container.getBack());
         m_container.popBack();
+
         m_lock.unlock();
         return true;
     }

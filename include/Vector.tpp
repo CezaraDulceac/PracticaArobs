@@ -152,15 +152,20 @@ void Vector<T>::pushFront(T&& element)
 template <typename T>
 void Vector<T>::pushBack(T& element)
 {
-    //insert(end(), element);
+    // if(this->m_capacity <= this->m_size) 
+    // {
+    //     reserve((1 + m_capacity) * 2);
+    // }
     m_data[m_size++] = element;
-
 }
 
 template <typename T>
 void Vector<T>::pushBack(T&& element)
 {
-    //insert(end(), std::move(element));
+    // if(this->m_capacity <= this->m_size) 
+    // {
+    //     reserve((1 + m_capacity) * 2);
+    // }
     m_data[m_size++] = std::move(element);
 }
 

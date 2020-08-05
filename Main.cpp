@@ -9,18 +9,55 @@
 #include "Algorithms.hpp"
 #include <iostream>
 
-int main()
+
+void testSPQ()
 {
-  TaskScheduler scheduler(5);
+  SPriorityQueue<int> spq;
+  spq.push(std::move(1));
+  spq.push(std::move(6));
+  spq.push(std::move(3));
+  spq.push(std::move(9));
+  spq.push(std::move(0));
+  int a,b;
+  spq.tryPop(a);
+  spq.tryPop(b);
+  std::cout << spq << std::endl;
+  std::cout << a << std::endl;
+  std::cout << b << std::endl;
+
+}
+
+void testThreads()
+{
+
+}
+
+void testTaskScheduler()
+{
+  TaskScheduler scheduler(4);
 
   TaskArgument arg(1, 2);
   TaskArgument arg1(2, 2);
 
-  auto future = scheduler.schedule(arg, 0);
-  auto future1 = scheduler.schedule(arg1, 1);
+  auto future1 = scheduler.schedule(arg, 0); 
+  auto future2 = scheduler.schedule(arg1, 1);
 
-  std::cout << future.get().sum << std::endl;
-  //std::cout << future1.get().sum << std::endl;
+
+  std::cout << future1.get().sum << std::endl;
+  std::cout << future2.get().sum << std::endl;
+
+  scheduler.stop();
+
+}
+
+int main()
+{
+  // testSPQ();
+
+  // testThreads();
+  testTaskScheduler();
+  
+  
 
   //std::cout << "forth\n";
   // SPriorityQueue<int> s;
@@ -61,6 +98,7 @@ int main()
   // vec.pushBack(1);
   // vec.pushBack(2);
   // vec.pushBack(3);
+ 
   // std::cout << vec[0] << std::endl;
   // std::cout << vec[1] << std::endl;
   // vec[0] = 10;
@@ -132,7 +170,7 @@ int main()
   // std::cout <<list;
   // list.insert(list.end(), 10);
   // std::cout <<list;
-  // list.insert(list.begin(), 15);
+  // list.insert(list.begin() + 2, 15);
   // std::cout <<list;
   // //std::cout << "begin + 1 :\n";
   // ListIterator<int> it2(list.begin() + 1);
@@ -194,4 +232,5 @@ int main()
   // q.print();
   // q.pop();
   // std::cout << q;
+  return 0;
 }

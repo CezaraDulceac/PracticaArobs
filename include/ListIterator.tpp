@@ -71,12 +71,13 @@ template <typename T>
  template <typename T>
  ListIterator<T> ListIterator<T>::operator+(std::size_t difference)
  {
+     ListIterator it = *this;
      while(difference)
      {
-         m_value = m_value->getNext();
+         it.m_value = it.m_value->getNext();
          --difference;
      }
-     return *this;
+     return it;
  }
 
  template <typename T>
