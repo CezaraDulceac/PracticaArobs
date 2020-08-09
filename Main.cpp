@@ -3,11 +3,21 @@
 #include "ListNode.hpp"
 #include "Queue.hpp"
 #include "PriorityQueue.hpp"
+
 #include "SynchronizedPriorityQueue.hpp"
 #include "Task.hpp"
 #include "TaskScheduler.hpp"
+
 #include "Algorithms.hpp"
+
+#include "EventManager.hpp"
+#include "EventPayload.hpp"
+#include "EventType.hpp"
+
+#include "Socket.hpp"
+
 #include <iostream>
+#include <map>
 
 
 void testSPQ()
@@ -27,9 +37,20 @@ void testSPQ()
 
 }
 
-void testThreads()
+void testMap()
 {
+  std::map<int,int> maps;
+  maps.insert(std::pair<int,int>(1,1));
+  maps.insert(std::pair<int,int>(2,2));
 
+  if(maps.find(1) != maps.end())
+  {
+    std::cout << "Da\n";
+  }else
+  {
+    std::cout << "Nu\n";
+  }
+  
 }
 
 void testTaskScheduler()
@@ -56,7 +77,7 @@ int main()
 
   // testThreads();
   testTaskScheduler();
-  
+  testMap();
   
 
   //std::cout << "forth\n";

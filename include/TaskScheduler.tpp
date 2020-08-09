@@ -4,7 +4,6 @@
 #include <future>
 #include <thread>
 #include <iostream>
-#include <functional>
 
 TaskScheduler::TaskScheduler(std::size_t count)
 {

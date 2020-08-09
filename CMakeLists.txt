@@ -28,6 +28,9 @@ set(HEADERS
 	include/TaskResult.hpp
 	include/TaskScheduler.hpp
 	include/Functional.hpp
+	include/EventManager.hpp
+	include/EventPayload.hpp
+	include/EventType.hpp
 )
 
 set(INCLUDE_DIRECTORIES
